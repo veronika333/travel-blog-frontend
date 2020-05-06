@@ -1,5 +1,12 @@
 import React from 'react';
-import postdata from '../components/postdata';
+import postdata from '../../components/postdata';
+import SinglePage from '../SinglePage/SinglePage'
+import {
+    useRouteMatch,
+    Route,
+    Switch,
+    Link,
+} from "react-router-dom";
 
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Card from 'react-bootstrap/Card';
@@ -11,6 +18,7 @@ import Col from 'react-bootstrap/Col';
 
 
 const LandingPage = () => {
+    let match = useRouteMatch();
     const posts = postdata;
 
     const expList = posts.map((post) => {
@@ -25,7 +33,8 @@ const LandingPage = () => {
                         <Card.Text>{post.location}{post.date}</Card.Text>
                         <Card.Text>{post.shortDesc}</Card.Text>
                         <Button variant="warning" size="sm">
-                            Read experience
+                        <Link to={`${match.url}/${post.title}`}> Read experience 
+                            </Link>
                         </Button>
                     </Card.Body>
                 </Card>
@@ -37,6 +46,11 @@ const LandingPage = () => {
 
     return (
         <div>
+             <Switch>
+            <Route path="/:postAuthor/:postId">
+                <SinglePage/>
+                </Route>
+            <Route path={match.path}>
              <Jumbotron className="bg-transparent jumbotron-fluid p-0">
              <Container fluid={true}>
                 <Row className="justify-content-center py-5">
@@ -46,6 +60,8 @@ const LandingPage = () => {
                 </Row>
                 </Container>
             </Jumbotron>
+            </Route>
+        </Switch>
         </div>
     );
 };

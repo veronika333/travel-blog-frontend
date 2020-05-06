@@ -1,14 +1,29 @@
 import React from 'react';
-import LandingPage from './pages/LandingPage';
-import SinglePage from './pages/SinglePage';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import LandingPage from './pages/LandingPage/LandingPage';
+import SinglePage from './pages/SinglePage/SinglePage';
+import MainNav from "./pages/MainNav/MainNav";
+import Home from "./pages/Home/Home";
+import About from "./pages/About/About";
 
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
   return (
     <div>
-      <SinglePage />
+      <Router>
+        <MainNav />
+        <main>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/single-exp" component={SinglePage} />
+            <Route path="/landing-page" component={LandingPage} />
+          </Switch>
+        </main>
+      </Router>
     </div>
   );
 }
