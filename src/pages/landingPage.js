@@ -19,10 +19,10 @@ import Container from 'react-bootstrap/Container';
 
 const landingPage = () => {
     let match = useRouteMatch();
-    const post = postdata;
+    const posts = postdata;
 
 
-const expList = post.map((post) => {
+const expList = posts.map((post) => {
     return (
         <div key={post.id} >
             <Card bg="white" text="dark" className="mt-5" border="secondary" style={{ width: '10rem'}} >
@@ -30,8 +30,9 @@ const expList = post.map((post) => {
         <Card.Body>
         <Card.Title>{post.title}</Card.Title>
         <Card.Subtitle>{post.author}</Card.Subtitle>
-        <Card.text>{post.location}{post.date}</Card.text>   
-        <Card.text>{post.shortDesc}</Card.text>
+        <Card.Text>{post.location}</Card.Text>   
+        <Card.Text>{post.date}</Card.Text>
+        <Card.Text>{post.shortDesc}</Card.Text>
         <Button variant="dark" block>
                 <Link to={`${match.url}/${post.title}`}> Read experience 
                 </Link>
