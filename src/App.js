@@ -1,5 +1,6 @@
 import React from 'react';
-import landingPage from './pages/landingPage';
+import LandingPage from './pages/LandingPage';
+import SinglePage from './pages/SinglePage';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -7,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const App = () => {
   return (
     <div>
-      <landingPage />
+      <SinglePage />
     </div>
   );
 }

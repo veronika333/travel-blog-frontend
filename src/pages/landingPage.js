@@ -10,7 +10,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 
-const landingPage = () => {
+const LandingPage = () => {
     const posts = postdata;
 
     const expList = posts.map((post) => {
@@ -50,4 +50,4 @@ const landingPage = () => {
     );
 };
 
-export default landingPage;
+export default LandingPage;
