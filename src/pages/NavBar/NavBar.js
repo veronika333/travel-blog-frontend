@@ -29,8 +29,10 @@ const NavBar = () => {
               About
             </Link>
           </li>
+          {// Hard-coded a single postID, not the finest solution but it works. Just made sure MainNav would work.
+          }
           <li>
-            <Link to="/single-exp" className="nav-link" onClick={closeNav}>
+            <Link to="landing-page/Post%201" className="nav-link" onClick={closeNav}>
               Single Experience
             </Link>
           </li>

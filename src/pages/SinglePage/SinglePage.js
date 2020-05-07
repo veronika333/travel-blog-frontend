@@ -1,5 +1,5 @@
 import React from 'react';
-import postdata from '../../components/postdata';
+import postsdata from '../../components/postsdata';
 import './SinglePage.css';
 
 import { useParams, Link } from "react-router-dom";
@@ -14,14 +14,14 @@ import Button from 'react-bootstrap/Button'
 const SinglePage = () => {
 
     let { postId } = useParams();
-    let post = postdata.find((b) => b.title === postId);
+    let post = postsdata.find((p) => p.title === postId);
 
     return (
         <Container>
             <Col>
                 <Row>
                     <h1>{post.title}</h1>
-                </Row>
+                </Row >
                 <Row>
                     <h3>{post.author}</h3>
                 </Row>
@@ -34,8 +34,8 @@ const SinglePage = () => {
             </Col>
             <p>{post.story}</p>
             <div>
-            <Button variant="primary" size="smd">
-                        <Link to="/landing-page"> Read experience 
+            <Button variant="warning" size="smd">
+                        <Link to="/landing-page"> Back to experiences.
                             </Link>
                         </Button>
             </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import postdata from '../../components/postdata';
+import postsdata from '../../components/postsdata';
 import SinglePage from '../SinglePage/SinglePage'
 import {
     useRouteMatch,
@@ -19,7 +19,7 @@ import Col from 'react-bootstrap/Col';
 
 const LandingPage = () => {
     let match = useRouteMatch();
-    const posts = postdata;
+    const posts = postsdata;
 
     const expList = posts.map((post) => {
         return (
