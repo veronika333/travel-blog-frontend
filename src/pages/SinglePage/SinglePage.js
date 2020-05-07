@@ -29,15 +29,15 @@ const SinglePage = () => {
                 <p>{post.location}</p>
                 <p>{post.date}</p>
                 <img src={post.imageUrl} alt={post.title} width="200" />
-                <img src={post.imageUrl} alt={post.title}  width="200" />
-                <img src={post.imageUrl} alt={post.title}  width="200" />
+                <img src={post.imageUrl} alt={post.title} width="200" />
+                <img src={post.imageUrl} alt={post.title} width="200" />
             </Col>
             <p>{post.story}</p>
             <div>
-            <Button variant="warning" size="smd">
-                        <Link to="/landing-page"> Back to experiences.
+                <Button variant="warning" size="smd">
+                    <Link to="/landing-page"> Back to experiences.
                             </Link>
-                        </Button>
+                </Button>
             </div>
         </Container>
     );
