@@ -41,6 +41,11 @@ const NavBar = () => {
               Landing Page
             </Link>
           </li>
+          <li>
+            <Link to="/post-experience" className="nav-link" onClick={closeNav}>
+              Post an Experience
+            </Link>
+          </li>
         </ul>
       </nav>
       <span className="open-btn" onClick={openNav}>
