@@ -1,3 +1,4 @@
+
 import React from 'react';
 import './App.css';
 import LandingPage from './pages/LandingPage/LandingPage';
@@ -21,11 +22,13 @@ const App = () => {
             <Route path="/about" component={About} />
             <Route path="/experience/:postId" component={SinglePage} />
             <Route path="/experience" component={LandingPage} />
+
           </Switch>
         </main>
       </Router>
     </div>
   );
 }
+
 
 export default App;
