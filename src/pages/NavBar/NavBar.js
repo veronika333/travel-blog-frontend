@@ -32,12 +32,12 @@ const NavBar = () => {
           {// Hard-coded a single postID, not the finest solution but it works. Just made sure MainNav would work.
           }
           <li>
-            <Link to="landing-page/Post%201" className="nav-link" onClick={closeNav}>
+            <Link to="/experience/:postId" className="nav-link" onClick={closeNav}>
               Single Experience
             </Link>
           </li>
           <li>
-            <Link to="/landing-page" className="nav-link" onClick={closeNav}>
+            <Link to="/experience" className="nav-link" onClick={closeNav}>
               Landing Page
             </Link>
           </li>
