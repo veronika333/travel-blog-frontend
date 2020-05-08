@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import postsdata from '../../components/postsdata';
 import './SinglePage.css';
 import axios from 'axios'
 
@@ -16,47 +15,54 @@ const SinglePage = () => {
 
     let { postId } = useParams();
     console.log(postId)
-    /*   useEffect(() => {
-          if (!loadedPost) {
-              axios.get('http://localhost:8000/experience/' + postId).then((response) => {
-                  console.log(response.data);
-                  setLoadedpost(response.data)
-                  
-              })
-          }
-      }) */
+    useEffect(() => {
+        if (!loadedPost) {
+            axios.get('http://localhost:8000/experience/' + postId).then((response) => {
+                console.log(response.data);
+                setLoadedpost(response.data);
 
-    axios.get('http://localhost:8000/experience/' + postId).then((response) => {
-        console.log(response.data);
-        setLoadedpost(response.data)
+            });
+        }
+    });
 
-    })
-    /* let post = postsdata.find((p) => p.id === postId); */
+    let postData = undefined;
+    if (postId) {
+        postData = <h1>Loading post</h1>
+    }
+    if (loadedPost) {
+        postData = (
+            <div className="fullPost">
+                <Container>
+                    <Col>
+                        <Row>
+                            <h1>{loadedPost.title}</h1>
+                        </Row >
+                        <Row>
+                            <h3>{loadedPost.author}</h3>
+                        </Row>
+                        <p>{loadedPost.shortDesc}</p>
+                        <p>{loadedPost.location}</p>
+                        <p>{loadedPost.date}</p>
+                        <img src={loadedPost.imageUrl} alt={loadedPost.title} width="200" />
+                        <img src={loadedPost.imageUrl} alt={loadedPost.title} width="200" />
+                        <img src={loadedPost.imageUrl} alt={loadedPost.title} width="200" />
+                    </Col>
+                    <p>{loadedPost.story}</p>
+                    <div>
+                        <Button variant="warning" size="smd">
+                            <Link to="/experience"> Back to experiences.
+                               </Link>
+                        </Button>
+                    </div>
+                </Container>
+            </div>
 
-    return (
-        <Container>
-            {/*  <Col>
-                <Row>
-                    <h1>{post.title}</h1>
-                </Row >
-                <Row>
-                    <h3>{post.author}</h3>
-                </Row>
-                <p>{post.shortDesc}</p>
-                <p>{post.location}</p>
-                <p>{post.date}</p>
-                <img src={post.imageUrl} alt={post.title} width="200" />
-                <img src={post.imageUrl} alt={post.title} width="200" />
-                <img src={post.imageUrl} alt={post.title} width="200" />
-            </Col>
-            <p>{post.story}</p>
-            <div>
-                <Button variant="warning" size="smd">
-                    <Link to="/experience"> Back to experiences.
-                            </Link>
-                </Button>
-            </div> */}
-        </Container>
-    );
+        );
+    }
+
+
+    return postData;
+
+
 }
 export default SinglePage;

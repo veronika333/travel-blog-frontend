@@ -19,7 +19,7 @@ const App = () => {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/about" component={About} />
-            <Route path="/experience/:id" component={SinglePage} />
+            <Route path="/experience/:postId" component={SinglePage} />
             <Route path="/experience" component={LandingPage} />
           </Switch>
         </main>
