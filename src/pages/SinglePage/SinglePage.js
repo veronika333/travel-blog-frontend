@@ -3,7 +3,7 @@ import "./SinglePage.css";
 import axios from "axios";
 
 import { useParams, Link } from "react-router-dom";
-
+import Alert from "react-bootstrap/Alert";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -11,15 +11,22 @@ import Button from "react-bootstrap/Button";
 
 const SinglePage = () => {
   const [loadedExp, setLoadedExp] = useState();
+  const [failedDelete, setFailedDelete] = useState();
   let { postId } = useParams();
+
+  //delete single post from the browser and database
   const deleteHandler = (id) => {
-    console.log(id);
-    axios.delete("http://localhost:8000/experience/" + id).then(() => {
-      console.log(`Deleted post: ${id}`);
-      setLoadedExp("");
+    axios.delete("http://localhost:8000/experience/" + id).then((response) => {
+      console.log(response);
+      if (response.status === 204) {
+        setFailedDelete(true);
+      } else {
+        setLoadedExp("");
+      }
     });
   };
 
+  //redirect to landing page and update the page by refreshing
   const forceReload = () => {
     window.location.href = "http://localhost:3000/landing-page";
   };
@@ -40,7 +47,16 @@ const SinglePage = () => {
     exp = <h1>Loading</h1>;
   }
 
-  if (loadedExp) {
+  if (loadedExp && failedDelete) {
+    exp = (
+      <div>
+        <Alert variant="warning">
+          <Alert.Heading>Experience not Deleted</Alert.Heading>
+          <p>Pleases try again later</p>
+        </Alert>
+      </div>
+    );
+  } else if (loadedExp) {
     exp = (
       <Container>
         <Col>
@@ -58,12 +74,12 @@ const SinglePage = () => {
           <img src={loadedExp.imageUrl} alt={loadedExp.title} width="200" />
         </Col>
         <p>{loadedExp.story}</p>
-        <div>
+        <div className="single-page-btn">
           <Button variant="warning" size="smd">
             <Link to="/landing-page">Back to experiences.</Link>
           </Button>
         </div>
-        <div>
+        <div className="single-page-btn">
           <Button
             variant="warning"
             size="smd"
@@ -79,7 +95,10 @@ const SinglePage = () => {
   } else {
     exp = (
       <div>
-        <h1>Deleted post</h1>
+        <Alert variant="success">
+          <Alert.Heading>Successfully deleted experience</Alert.Heading>
+        </Alert>
+
         <Button onClick={() => forceReload()} variant="warning" size="smd">
           Back to experiences
         </Button>
