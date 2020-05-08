@@ -1,68 +1,111 @@
-import React, { useEffect, useState } from 'react';
-import './SinglePage.css';
-import axios from 'axios'
+
+import React, { useState, useEffect } from "react";
+import "./SinglePage.css";
+import axios from "axios";
 
 import { useParams, Link } from "react-router-dom";
-
-import Container from 'react-bootstrap/Container'
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
-import Button from 'react-bootstrap/Button'
-
+import Alert from "react-bootstrap/Alert";
+import Container from "react-bootstrap/Container";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Button from "react-bootstrap/Button";
 
 const SinglePage = () => {
-    const [loadedPost, setLoadedpost] = useState();
+  const [loadedExp, setLoadedExp] = useState();
+  const [failedDelete, setFailedDelete] = useState();
+  let { postId } = useParams();
 
-    let { postId } = useParams();
-    console.log(postId)
-    useEffect(() => {
-        if (!loadedPost) {
-            axios.get('http://localhost:8000/experience/' + postId).then((response) => {
-                console.log(response.data);
-                setLoadedpost(response.data);
-
-            });
-        }
+  //delete single post from the browser and database
+  const deleteHandler = (id) => {
+    axios.delete("http://localhost:8000/experience/" + id).then((response) => {
+      console.log(response);
+      if (response.status === 204) {
+        setFailedDelete(true);
+      } else {
+        setLoadedExp("");
+      }
     });
+  };
 
-    let postData = undefined;
-    if (postId) {
-        postData = <h1>Loading post</h1>
+  //redirect to landing page and update the page by refreshing
+  const forceReload = () => {
+    window.location.href = "http://localhost:3000/landing-page";
+  };
+
+  useEffect(() => {
+    if (!loadedExp) {
+      axios
+        .get("http://localhost:8000/experience/" + postId)
+        .then((response) => {
+          setLoadedExp(response.data);
+        });
     }
-    if (loadedPost) {
-        postData = (
-            <div className="fullPost">
-                <Container>
-                    <Col>
-                        <Row>
-                            <h1>{loadedPost.title}</h1>
-                        </Row >
-                        <Row>
-                            <h3>{loadedPost.author}</h3>
-                        </Row>
-                        <p>{loadedPost.shortDesc}</p>
-                        <p>{loadedPost.location}</p>
-                        <p>{loadedPost.date}</p>
-                        <img src={loadedPost.imageUrl} alt={loadedPost.title} width="200" />
-                        <img src={loadedPost.imageUrl} alt={loadedPost.title} width="200" />
-                        <img src={loadedPost.imageUrl} alt={loadedPost.title} width="200" />
-                    </Col>
-                    <p>{loadedPost.story}</p>
-                    <div>
-                        <Button variant="warning" size="smd">
-                            <Link to="/experience"> Back to experiences.
-                               </Link>
-                        </Button>
-                    </div>
-                </Container>
-            </div>
+  });
 
-        );
-    }
+  let exp = undefined;
 
+  if (postId) {
+    exp = <h1>Loading</h1>;
+  }
 
-    return postData;
+  if (loadedExp && failedDelete) {
+    exp = (
+      <div>
+        <Alert variant="warning">
+          <Alert.Heading>Experience not Deleted</Alert.Heading>
+          <p>Pleases try again later</p>
+        </Alert>
+      </div>
+    );
+  } else if (loadedExp) {
+    exp = (
+      <Container>
+        <Col>
+          <Row>
+            <h1>{loadedExp.title}</h1>
+          </Row>
+          <Row>
+            <h3>{loadedExp.author}</h3>
+          </Row>
+          <p>{loadedExp.shortDes}</p>
+          <p>{loadedExp.location}</p>
+          <p>{loadedExp.date}</p>
+          <img src={loadedExp.imageUrl} alt={loadedExp.title} width="200" />
+          <img src={loadedExp.imageUrl} alt={loadedExp.title} width="200" />
+          <img src={loadedExp.imageUrl} alt={loadedExp.title} width="200" />
+        </Col>
+        <p>{loadedExp.story}</p>
+        <div className="single-page-btn">
+          <Button variant="warning" size="smd">
+            <Link to="/landing-page">Back to experiences.</Link>
+          </Button>
+        </div>
+        <div className="single-page-btn">
+          <Button
+            variant="warning"
+            size="smd"
+            onClick={() => {
+              deleteHandler(loadedExp.id);
+            }}
+          >
+            Delete experience
+          </Button>
+        </div>
+      </Container>
+    );
+  } else {
+    exp = (
+      <div>
+        <Alert variant="success">
+          <Alert.Heading>Successfully deleted experience</Alert.Heading>
+        </Alert>
 
-
-}
+        <Button onClick={() => forceReload()} variant="warning" size="smd">
+          Back to experiences
+        </Button>
+      </div>
+    );
+  }
+  return exp;
+};
 export default SinglePage;
