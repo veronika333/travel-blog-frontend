@@ -4,6 +4,8 @@ import axios from 'axios';
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
+
 
 const NewPost = () => {
     const [newPost, setNewPost] = useState({
@@ -14,12 +16,13 @@ const NewPost = () => {
         location: '',
         date: '',
         story: '',
+    });
+
+    const[postSent, setPostSent] = useState({
         disabled: false,
         experienceSent: null, 
     });
-
     
-
 
     const changeValueHandler = (p) => {
         setNewPost({
@@ -35,12 +38,16 @@ const NewPost = () => {
             disabled: true
         });
 
+        // send new Experience post from browser and database.
+        // Please note: This code does send data, but the disabled and experienceSent
+        // do NOT work at this moment, because they are not part of newPost.
         axios.post("http://localhost:8000/experience", newPost).then(response =>{
             if(response.data.success){
                 setNewPost({
                     disabled: false,
                     experienceSent: true
                 });
+                console.log(response.data);
             } else {
                 setNewPost({
                     disabled: false,
