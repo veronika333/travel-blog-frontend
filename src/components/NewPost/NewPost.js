@@ -20,6 +20,7 @@ const NewPost = () => {
 
     // These are to confirm the Experience is send to database
     // User also gets a success/error alert message. 
+    // Alert is disabled (true) because otherwise it pops up whenever user renders the page.
     const [postSent, setPostSent] = useState({
         disableAlert: true,
         experienceSent: null, 
@@ -36,12 +37,13 @@ const NewPost = () => {
     const addPostHandler = (p) => {
         p.preventDefault();
 
-
+        // sends new Experience post (newPost) from browser and database.
         axios.post("http://localhost:8000/experience", newPost)
         .then(response => {
+             // Here the code gets the message to make the alert visible.
                 setPostSent({
                     disableAlert: false,
-                    experienceSent: response.data.success ? true : false
+                    experienceSent: response.data.success ? false : true
                 });
             }) 
             .catch(err =>{
@@ -90,11 +92,11 @@ const NewPost = () => {
         </Button>
 
         {
-                postSent.disableAlert ?
-                '' :
-                <Alert variant={postSent.experienceSent === true ? 'success' : 'danger'}>
-                    Experience {postSent.experienceSent === false ? 'Posted' : 'not Sent'}
-                </Alert>
+            postSent.disableAlert ?
+            '' :
+             <Alert variant={postSent.experienceSent === true ? 'success' : 'danger'}>
+            Experience {postSent.experienceSent === true ? 'Posted' : 'not Sent'}
+            </Alert>
             }
     </Form>
     );
