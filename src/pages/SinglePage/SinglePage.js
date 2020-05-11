@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import "./SinglePage.css";
 import axios from "axios";
@@ -29,7 +28,7 @@ const SinglePage = () => {
 
   //redirect to landing page and update the page by refreshing
   const forceReload = () => {
-    window.location.href = "http://localhost:3000/landing-page";
+    window.location.href = "http://localhost:3000/";
   };
 
   useEffect(() => {

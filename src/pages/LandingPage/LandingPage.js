@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import SinglePage from "../SinglePage/SinglePage";
 import { useRouteMatch, Route, Switch, Link } from "react-router-dom";
@@ -58,7 +57,7 @@ const LandingPage = () => {
   return (
     <div>
       <Switch>
-        <Route path="/landing-page/:postId">
+        <Route path="/experience/:postId">
           <SinglePage />
         </Route>
         <Route path={match.path}>

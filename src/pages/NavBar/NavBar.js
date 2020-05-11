@@ -19,26 +19,21 @@ const NavBar = () => {
           <FontAwesomeIcon icon={faTimes} />
         </span>
         <ul>
+          {
+            // Hard-coded a single postID, not the finest solution but it works. Just made sure MainNav would work.
+          }
+          {/* <li>
+            <Link
+              to="/experience/:postId"
+              className="nav-link"
+              onClick={closeNav}
+            >
+              Single Experience
+            </Link>
+          </li> */}
           <li>
             <Link to="/" className="nav-link" onClick={closeNav}>
               Home
-            </Link>
-          </li>
-          <li>
-            <Link to="/about" className="nav-link" onClick={closeNav}>
-              About
-            </Link>
-          </li>
-          {// Hard-coded a single postID, not the finest solution but it works. Just made sure MainNav would work.
-          }
-          <li>
-            <Link to="/experience/:postId" className="nav-link" onClick={closeNav}>
-              Single Experience
-            </Link>
-          </li>
-          <li>
-            <Link to="/experience" className="nav-link" onClick={closeNav}>
-              Landing Page
             </Link>
           </li>
         </ul>
