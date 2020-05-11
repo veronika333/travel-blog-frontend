@@ -1,3 +1,4 @@
+
 import React from 'react';
 import './App.css';
 import LandingPage from './pages/LandingPage/LandingPage';
@@ -20,14 +21,15 @@ const App = () => {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/about" component={About} />
-            <Route path="/single-page" component={SinglePage} />
-            <Route path="/landing-page" component={LandingPage} />
-            <Route path="/post-experience" component={NewPost} />
+            <Route path="/experience/:postId" component={SinglePage} />
+            <Route path="/experience" component={LandingPage} />
+
           </Switch>
         </main>
       </Router>
     </div>
   );
 }
+
 
 export default App;
