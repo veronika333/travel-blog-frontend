@@ -18,8 +18,10 @@ const NewPost = () => {
         story: '',
     });
 
-    const[postSent, setPostSent] = useState({
-        disabled: false,
+    // These are to confirm the Experience is send to database
+    // User also gets a success/error alert message. 
+    const [postSent, setPostSent] = useState({
+        disableAlert: true,
         experienceSent: null, 
     });
     
@@ -27,46 +29,32 @@ const NewPost = () => {
     const changeValueHandler = (p) => {
         setNewPost({
             ...newPost,
-            [p.target.name]:p.target.value,
+            [p.target.name]: p.target.value,
         });
     };
 
     const addPostHandler = (p) => {
         p.preventDefault();
 
-        setNewPost({
-            disabled: true
-        });
 
-        // send new Experience post from browser and database.
-        // Please note: This code does send data, but the disabled and experienceSent
-        // do NOT work at this moment, because they are not part of newPost.
-        axios.post("http://localhost:8000/experience", newPost).then(response =>{
-            if(response.data.success){
-                setNewPost({
-                    disabled: false,
-                    experienceSent: true
+        axios.post("http://localhost:8000/experience", newPost)
+        .then(response => {
+                setPostSent({
+                    disableAlert: false,
+                    experienceSent: response.data.success ? true : false
                 });
-                console.log(response.data);
-            } else {
-                setNewPost({
-                    disabled: false,
-                    experienceSent: false
-                });
-            }
-        })
+            }) 
             .catch(err =>{
                 console.log(err);  
             
-            setNewPost({
-                disabled: false,
+            setPostSent({
+                disableAlert: false,
                 experienceSent: false
             });
-        })
+        });
     }
 
     return (
-        <>
         <Form className="newPost" onSubmit={addPostHandler}>
         <Form.Group>
             <Form.Label htmlFor="title">Title</Form.Label>
@@ -101,10 +89,14 @@ const NewPost = () => {
             Share Experience
         </Button>
 
-        {useState.experienceSent === true && <p className="d-inline exp-post-success">Experience Posted</p>}
-        {useState.experienceSent === false && <p className="d-inline exp-post-err">Experience not Sent.</p>}
-        </Form>
-        </>
+        {
+                postSent.disableAlert ?
+                '' :
+                <Alert variant={postSent.experienceSent === true ? 'success' : 'danger'}>
+                    Experience {postSent.experienceSent === false ? 'Posted' : 'not Sent'}
+                </Alert>
+            }
+    </Form>
     );
 };
 
