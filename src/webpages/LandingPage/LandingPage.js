@@ -22,8 +22,9 @@ const LandingPage = () => {
   }, []);
 
   const expList = exp.map((post) => {
+    const link = "/" + post._id;
     return (
-      <div key={post.id}>
+      <div key={post._id}>
         <Card
           bg="dark"
           text="warning"
