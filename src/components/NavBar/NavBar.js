@@ -35,6 +35,9 @@ const NavBar = () => {
             <Link to="/" className="nav-link" onClick={closeNav}>
               Home
             </Link>
+            <Link to="/post-experience" className="nav-link" onClick={closeNav}>
+              Create an experience
+            </Link>
           </li>
         </ul>
       </nav>

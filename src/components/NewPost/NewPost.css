@@ -1,0 +1,9 @@
+.exp-post-success {
+    color: #57A773;
+    padding: 1rem;
+}
+
+.exp-post-err {
+    color: #EE6352;
+    padding: 1rem;
+}
