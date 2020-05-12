@@ -22,6 +22,7 @@ const LandingPage = () => {
   }, []);
 
   const expList = exp.map((post) => {
+    const link = "/" + post._id;
     return (
       <div key={post._id}>
         <Card
@@ -46,7 +47,7 @@ const LandingPage = () => {
             </Card.Text>
             <Card.Text>{post.shortDesc}</Card.Text>
             <Button variant="warning" size="sm">
-              <Link to={`${match.url}/${post._id}`}> Read experience</Link>
+              <Link to={link}> Read experience</Link>
             </Button>
           </Card.Body>
         </Card>
