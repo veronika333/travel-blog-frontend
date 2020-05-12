@@ -1,9 +1,8 @@
 import React from "react";
 import "./App.css";
-import LandingPage from "./Webpages/LandingPage/LandingPage";
+import LandingPage from "./webpages/LandingPage/LandingPage";
 import MainNav from "./components/MainNav/MainNav";
 import NewPost from './components/NewPost/NewPost';
-
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -18,7 +17,7 @@ const App = () => {
           <Switch>
             {/* <Route path="/experience/:postId" component={SinglePage} /> */}
             <Route exact path="/" component={LandingPage} />
-            <Route path="/post-experience" component={NewPost} />
+            <Route exact path="/post-experience" component={NewPost} />
           </Switch>
         </main>
       </Router>
