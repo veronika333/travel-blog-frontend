@@ -1,9 +1,14 @@
 import React from "react";
 import "./App.css";
+import LandingPage from "./Webpages/LandingPage/LandingPage";
+import MainNav from "./components/MainNav/MainNav";
+import NewPost from './components/NewPost/NewPost';
+
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import MainNav from "./MainNav/MainNav";
-import Home from "./Home/Home";
-import About from "./About/About";
+
+import "bootstrap/dist/css/bootstrap.min.css";
+
 const App = () => {
   return (
     <div>
@@ -11,8 +16,9 @@ const App = () => {
         <MainNav />
         <main>
           <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/about" component={About} />
+            {/* <Route path="/experience/:postId" component={SinglePage} /> */}
+            <Route exact path="/" component={LandingPage} />
+            <Route path="/post-experience" component={NewPost} />
           </Switch>
         </main>
       </Router>
