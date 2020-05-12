@@ -23,7 +23,7 @@ const LandingPage = () => {
 
   const expList = exp.map((post) => {
     return (
-      <div key={post.id}>
+      <div key={post._id}>
         <Card
           bg="dark"
           text="warning"
@@ -46,7 +46,7 @@ const LandingPage = () => {
             </Card.Text>
             <Card.Text>{post.shortDesc}</Card.Text>
             <Button variant="warning" size="sm">
-              <Link to={`${match.url}/${post.id}`}> Read experience</Link>
+              <Link to={`${match.url}/${post._id}`}> Read experience</Link>
             </Button>
           </Card.Body>
         </Card>
@@ -57,7 +57,7 @@ const LandingPage = () => {
   return (
     <div>
       <Switch>
-        <Route path="/experience/:postId">
+        <Route path="/:postId">
           <SinglePage />
         </Route>
         <Route path={match.path}>

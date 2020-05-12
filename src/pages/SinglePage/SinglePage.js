@@ -15,8 +15,8 @@ const SinglePage = () => {
   let { postId } = useParams();
 
   //delete single post from the browser and database
-  const deleteHandler = (id) => {
-    axios.delete("http://localhost:8000/experience/" + id).then((response) => {
+  const deleteHandler = (_id) => {
+    axios.delete("http://localhost:8000/experience/" + _id).then((response) => {
       console.log(response);
       if (response.status === 204) {
         setFailedDelete(true);
@@ -76,7 +76,7 @@ const SinglePage = () => {
         <p>{loadedExp.story}</p>
         <div className="single-page-btn">
           <Button variant="warning" size="smd">
-            <Link to="/landing-page">Back to experiences.</Link>
+            <Link to="/">Back to experiences.</Link>
           </Button>
         </div>
         <div className="single-page-btn">
@@ -84,7 +84,7 @@ const SinglePage = () => {
             variant="warning"
             size="smd"
             onClick={() => {
-              deleteHandler(loadedExp.id);
+              deleteHandler(loadedExp._id);
             }}
           >
             Delete experience
