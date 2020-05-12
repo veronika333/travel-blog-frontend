@@ -12,7 +12,7 @@ import Button from "react-bootstrap/Button";
 const SinglePage = () => {
   const [loadedExp, setLoadedExp] = useState();
   const [failedDelete, setFailedDelete] = useState();
-  let { postId } = useParams();
+  let postId = window.location.pathname
 
   //delete single post from the browser and database
   const deleteHandler = (id) => {
@@ -76,7 +76,7 @@ const SinglePage = () => {
         <p>{loadedExp.story}</p>
         <div className="single-page-btn">
           <Button variant="warning" size="smd">
-            <Link to="/landing-page">Back to experiences.</Link>
+            <Link to="/">Back to experiences.</Link>
           </Button>
         </div>
         <div className="single-page-btn">
