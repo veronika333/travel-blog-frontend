@@ -15,7 +15,7 @@ const LandingPage = () => {
   let match = useRouteMatch();
 
   useEffect(() => {
-    axios.get("http://localhost:8000/experience").then((response) => {
+    axios.get("http://localhost:5000/experience").then((response) => {
       setExp(response.data);
       console.log(response.data);
     });
