@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import SinglePage from "../SinglePage/SinglePage";
+import Comments from './Comments'
 import { useRouteMatch, Route, Switch, Link } from "react-router-dom";
 import axios from "axios";
+import './landingPage.css'
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
@@ -10,16 +12,21 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
+
 const LandingPage = () => {
   const [exp, setExp] = useState([]);
+  const [comments, setComments] = useState(0)
   let match = useRouteMatch();
 
   useEffect(() => {
-    axios.get("http://localhost:8000/experience").then((response) => {
+    axios.get("http://localhost:5000/experience").then((response) => {
       setExp(response.data);
       console.log(response.data);
     });
   }, []);
+
+  /* const commentHandler = () => setComments(comments + 1) */
+
 
   const expList = exp.map((post) => {
     const link = "/" + post._id;
@@ -50,6 +57,7 @@ const LandingPage = () => {
               {/* Links need to be dynamic in order for React rendering to be competent */}
               <Link to={`/${post._id}`}> Read experience</Link>
             </Button>
+            <Comments comments={comments}></Comments>
           </Card.Body>
         </Card>
       </div>
