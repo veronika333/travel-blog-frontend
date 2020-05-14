@@ -16,7 +16,7 @@ const LandingPage = () => {
 
   useEffect(() => {
     axios.get("http://localhost:8000/experience").then((response) => {
-      setExp(response.data);
+    setExp(response.data);
       console.log(response.data);
     });
   }, []);
@@ -47,7 +47,8 @@ const LandingPage = () => {
             </Card.Text>
             <Card.Text>{post.shortDesc}</Card.Text>
             <Button variant="warning" size="sm">
-              <Link to={link}> Read experience</Link>
+               {/* Links need to be dynamic in order for React rendering to be competent */}
+              <Link to={`/${post.id}`}> Read experience</Link>
             </Button>
           </Card.Body>
         </Card>
@@ -57,11 +58,6 @@ const LandingPage = () => {
 
   return (
     <div>
-      <Switch>
-        <Route path="/:postId">
-          <SinglePage />
-        </Route>
-        <Route path={match.path}>
           <Jumbotron className="bg-transparent jumbotron-fluid p-0">
             <Container fluid={true}>
               <Row className="justify-content-center py-5">
@@ -71,8 +67,6 @@ const LandingPage = () => {
               </Row>
             </Container>
           </Jumbotron>
-        </Route>
-      </Switch>
     </div>
   );
 };
