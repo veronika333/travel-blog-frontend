@@ -27,12 +27,26 @@ const style = {
 
 const DeletePopup = (props) => {
     return (
-        <div style = {style.wrapper}>
-            <div style = {style.modal}>
-                <h1>Hi there!</h1>
-            </div>
-            
-        </div>
+        // <div style = {style.wrapper}>
+        //     <div style = {style.modal}>
+        //         <h1>Hi there!</h1>
+        //         <button onClick={props.modalHandler}>Cancel</button>
+        //         <button onClick={props.deleteHandler}>Delete</button>
+        //     </div>
+        // </div>
+
+        <Modal.Dialog style = {style.wrapper}>
+            <Modal.Header closeButton>
+              <Modal.Title>Warning</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <p>Are you sure you want to delete the post?</p>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={props.modalHandler}>Cancel</Button>
+              <Button variant="primary" onClick={props.deleteHandler}>Accept</Button>
+            </Modal.Footer>
+        </Modal.Dialog>
     )
 };
 export default DeletePopup;

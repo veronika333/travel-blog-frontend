@@ -19,16 +19,16 @@ const SinglePage = () => {
 
 
   //delete single post from the browser and database
-  // const deleteHandler = (_id) => {
-  //   axios.delete("http://localhost:5000/experience/" + _id).then((response) => {
-  //     console.log(response);
-  //     if (response.status === 204) {
-  //       setFailedDelete(true);
-  //     } else {
-  //       setLoadedExp("");
-  //     }
-  //   });
-  // };
+  const deleteHandler = (_id) => {
+    axios.delete("http://localhost:5000/experience/" + _id).then((response) => {
+      console.log(response);
+      if (response.status === 204) {
+        setFailedDelete(true);
+      } else {
+        setLoadedExp("");
+      }
+    });
+  };
 
   //redirect to landing page and update the page by refreshing
   const forceReload = () => {
@@ -45,7 +45,7 @@ const SinglePage = () => {
     }
   });
 
-  const showModal = () => {
+  const modalHandler = () => {
     setModal(!modal);
   }
 
@@ -91,14 +91,18 @@ const SinglePage = () => {
           <Button
             variant="warning"
             size="smd"
-            // onClick={() => {
-            //   deleteHandler(loadedExp._id);
-            // }}
-            onClick={showModal}
+            onClick={modalHandler}
           >
             Delete experience
           </Button>
-          {modal&&<DeletePopup />}
+          {modal&&<DeletePopup 
+            deleteHandler={
+              () => {
+               deleteHandler(loadedExp._id);
+              }
+            }
+            modalHandler={modalHandler}
+          />}
         </div>
       </Container>
     );
