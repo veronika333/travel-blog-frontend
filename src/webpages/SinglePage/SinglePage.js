@@ -12,7 +12,7 @@ import Button from "react-bootstrap/Button";
 const SinglePage = () => {
   const [loadedExp, setLoadedExp] = useState();
   const [failedDelete, setFailedDelete] = useState();
-  let postId = window.location.pathname
+  let postId = window.location.pathname;
 
   //delete single post from the browser and database
   const deleteHandler = (_id) => {
