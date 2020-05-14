@@ -4,29 +4,35 @@ import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useRouteMatch, Link, useParams } from "react-router-dom";
 
-const DeletePopup = () => {
+const style = {
+    wrapper: {
+        width: '100vw',
+        height: '100vh',
+        position: 'absolute',
+        zIndex: 999,
+        backgroundColor: 'transparent',
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
+        padding: '10vw',
+    },
+    modal : {
+        height: '100%',
+        width: '100%',
+        backgroundColor: 'rgba(155,155,154)',
+    }
 
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+}
 
+const DeletePopup = (props) => {
     return (
-        <div className="DeletePopup">
-<Modal.Dialog show={show} onHide={handleClose}>
-  <Modal.Header closeButton>
-    <Modal.Title>Confirm Delete</Modal.Title>
-  </Modal.Header>
-
-  <Modal.Body>
-    <p>Are you sure you want to delete the experience? This action cannot be undone.</p>
-  </Modal.Body>
-
-  <Modal.Footer>
-    <Button variant="secondary" onClick={handleClose}>Cancel</Button>
-    <Button variant="primary">Delete</Button>
-  </Modal.Footer>
-</Modal.Dialog>
+        <div style = {style.wrapper}>
+            <div style = {style.modal}>
+                <h1>Hi there!</h1>
+            </div>
+            
         </div>
-    );
+    )
 };
 export default DeletePopup;

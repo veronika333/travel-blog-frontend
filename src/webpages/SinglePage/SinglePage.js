@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Component } from "react";
 import "./SinglePage.css";
-import "../../components/DeletePopup";
+import DeletePopup from "../../components/DeletePopup/DeletePopup";
 import axios from "axios";
 
 import { useParams, Link } from "react-router-dom";
@@ -11,19 +11,12 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 
 const SinglePage = () => {
-  state = {
-    showDeletePopup: false,
-  };
+
   const [loadedExp, setLoadedExp] = useState();
-  // const [failedDelete, setFailedDelete] = useState();
+  const [failedDelete, setFailedDelete] = useState();
+  const [modal, setModal] = useState(false);
   let postId = window.location.pathname;
-  
-  //veronika's below
-  endHandler = () => {
-    this.setState({
-showDeletePopup: true,
-  })
-  };
+
 
   //delete single post from the browser and database
   // const deleteHandler = (_id) => {
@@ -51,6 +44,10 @@ showDeletePopup: true,
         });
     }
   });
+
+  const showModal = () => {
+    setModal(!modal);
+  }
 
   let exp = undefined;
 
@@ -97,10 +94,11 @@ showDeletePopup: true,
             // onClick={() => {
             //   deleteHandler(loadedExp._id);
             // }}
-            onClick={this.endHandler}
+            onClick={showModal}
           >
             Delete experience
           </Button>
+          {modal&&<DeletePopup />}
         </div>
       </Container>
     );
