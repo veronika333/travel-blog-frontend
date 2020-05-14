@@ -12,7 +12,6 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-
 const LandingPage = () => {
   const [exp, setExp] = useState([]);
   const [comments, setComments] = useState(0)
@@ -21,9 +20,17 @@ const LandingPage = () => {
   useEffect(() => {
     axios.get("http://localhost:5000/experience").then((response) => {
       setExp(response.data);
-      console.log(response.data);
     });
   }, []);
+
+  useEffect(() => {
+    axios.get("http://localhost:5000/experience").then((response) => {
+      setComments(response.data.length)
+      console.log(response.data.length)
+    })
+  }, [])
+
+
 
   /* const commentHandler = () => setComments(comments + 1) */
 
