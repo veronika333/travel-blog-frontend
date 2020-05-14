@@ -12,8 +12,8 @@ import Button from "react-bootstrap/Button";
 const SinglePage = () => {
   const [loadedExp, setLoadedExp] = useState();
   const [failedDelete, setFailedDelete] = useState();
-  let { postId } = useParams();
-
+  // let { postId } = useParams();
+  let postId = window.location.pathname;
   //delete single post from the browser and database
   const deleteHandler = (_id) => {
     axios.delete("http://localhost:8000/experience/" + _id).then((response) => {
