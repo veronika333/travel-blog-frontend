@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Component } from "react";
 import "./SinglePage.css";
+import "../../components/DeletePopup";
 import axios from "axios";
 
 import { useParams, Link } from "react-router-dom";
@@ -10,21 +11,31 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 
 const SinglePage = () => {
+  state = {
+    showDeletePopup: false,
+  };
   const [loadedExp, setLoadedExp] = useState();
-  const [failedDelete, setFailedDelete] = useState();
+  // const [failedDelete, setFailedDelete] = useState();
   let postId = window.location.pathname;
+  
+  //veronika's below
+  endHandler = () => {
+    this.setState({
+showDeletePopup: true,
+  })
+  };
 
   //delete single post from the browser and database
-  const deleteHandler = (_id) => {
-    axios.delete("http://localhost:5000/experience/" + _id).then((response) => {
-      console.log(response);
-      if (response.status === 204) {
-        setFailedDelete(true);
-      } else {
-        setLoadedExp("");
-      }
-    });
-  };
+  // const deleteHandler = (_id) => {
+  //   axios.delete("http://localhost:5000/experience/" + _id).then((response) => {
+  //     console.log(response);
+  //     if (response.status === 204) {
+  //       setFailedDelete(true);
+  //     } else {
+  //       setLoadedExp("");
+  //     }
+  //   });
+  // };
 
   //redirect to landing page and update the page by refreshing
   const forceReload = () => {
@@ -83,9 +94,10 @@ const SinglePage = () => {
           <Button
             variant="warning"
             size="smd"
-            onClick={() => {
-              deleteHandler(loadedExp._id);
-            }}
+            // onClick={() => {
+            //   deleteHandler(loadedExp._id);
+            // }}
+            onClick={this.endHandler}
           >
             Delete experience
           </Button>
