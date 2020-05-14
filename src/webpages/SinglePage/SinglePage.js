@@ -16,7 +16,7 @@ const SinglePage = () => {
 
   //delete single post from the browser and database
   const deleteHandler = (_id) => {
-    axios.delete("http://localhost:8000/experience/" + _id).then((response) => {
+    axios.delete("http://localhost:5000/experience/" + _id).then((response) => {
       console.log(response);
       if (response.status === 204) {
         setFailedDelete(true);
@@ -34,7 +34,7 @@ const SinglePage = () => {
   useEffect(() => {
     if (!loadedExp) {
       axios
-        .get("http://localhost:8000/experience/" + postId)
+        .get("http://localhost:5000/experience/" + postId)
         .then((response) => {
           setLoadedExp(response.data);
         });
