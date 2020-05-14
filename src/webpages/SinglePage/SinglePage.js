@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./SinglePage.css";
+import NewComment from "../../components/NewComment/NewComment";
 import axios from "axios";
 
-import { useParams, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Alert from "react-bootstrap/Alert";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
@@ -89,6 +90,9 @@ const SinglePage = () => {
           >
             Delete experience
           </Button>
+        </div>
+        <div>
+            <NewComment />
         </div>
       </Container>
     );
