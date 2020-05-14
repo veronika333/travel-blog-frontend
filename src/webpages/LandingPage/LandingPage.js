@@ -19,7 +19,10 @@ const LandingPage = () => {
 
   useEffect(() => {
     axios.get("http://localhost:5000/experience").then((response) => {
-      setExp(response.data);
+      console.log(response.data)
+      const sorted = response.data.sort((a, b) => { return new Date(a.date) - new Date(b.date) })
+      setExp(sorted);
+      /*    console.log(sorted) */
     });
   }, []);
 
@@ -31,12 +34,12 @@ const LandingPage = () => {
   }, [])
 
 
-
   /* const commentHandler = () => setComments(comments + 1) */
 
 
   const expList = exp.map((post) => {
     const link = "/" + post._id;
+
     return (
       <div key={post._id}>
         <Card
@@ -70,6 +73,14 @@ const LandingPage = () => {
       </div>
     );
   });
+
+
+  /*  const sortedExperiences = data.sort(function (a, b) {
+     return new Date(a.date) - new Date(b.date)
+   })
+ 
+   console.log(sortedExperiences) */
+
 
   return (
     <div>
