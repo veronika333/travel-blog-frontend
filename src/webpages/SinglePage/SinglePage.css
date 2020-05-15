@@ -1,3 +1,32 @@
 .single-page-btn {
     margin: 2rem auto;
 }
+
+.image {
+    margin: 1rem;
+    width: 80%;
+    left: 50%;
+    right: 50%;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.delete {
+    background: rgb(247, 145, 145);
+}
+
+.delete:hover {
+    background: rgb(240, 92, 105);
+}
+
+.edit {
+    background: rgb(86, 255, 80);
+}
+
+.edit:hover {
+    background: rgb(103, 170, 40);
+}

@@ -20,7 +20,7 @@ const SinglePage = () => {
   const [failedDelete, setFailedDelete] = useState();
 
   const [modal, setModal] = useState(false);
- 
+
 
   //state added to conditional rendering to show successful delete
   const [succesfullyDeleted, setSuccesfullyDeleted] = useState();
@@ -195,10 +195,10 @@ const SinglePage = () => {
           {postSaved.disableAlert ? (
             ""
           ) : (
-            <Alert variant={postSaved.expSaved === true ? "success" : "danger"}>
-              Experience {postSaved.expSaved === true ? "Saved" : "not Saved"}
-            </Alert>
-          )}
+              <Alert variant={postSaved.expSaved === true ? "success" : "danger"}>
+                Experience {postSaved.expSaved === true ? "Saved" : "not Saved"}
+              </Alert>
+            )}
         </Form>
         <div className="single-page-btn">
           <Button variant="warning" size="smd">
@@ -220,37 +220,41 @@ const SinglePage = () => {
           <p>{loadedExp.shortDesc}</p>
           <p>{loadedExp.location}</p>
           <p>{loadedExp.date}</p>
-          <img src={loadedExp.imageUrl} alt={loadedExp.title} width="200" />
-          <img src={loadedExp.imageUrl} alt={loadedExp.title} width="200" />
-          <img src={loadedExp.imageUrl} alt={loadedExp.title} width="200" />
+          <img className="image" src={loadedExp.imageUrl} alt={loadedExp.title} width="200" />
+          {/* !it's only possible to upload 1 picture, son we don't need 3 images right now!
+           <img src={loadedExp.imageUrl} alt={loadedExp.title} width="200" />
+          <img src={loadedExp.imageUrl} alt={loadedExp.title} width="200" /> */}
         </Col>
         <p>{loadedExp.story}</p>
-        <div className="single-page-btn">
-          <Button variant="warning" size="smd">
-            <Link to="/">Back to experiences.</Link>
-          </Button>
-        </div>
-        <div className="single-page-btn">
-          <Button
-            variant="warning"
-            size="smd"
-            onClick={modalHandler}
-          >
-            Delete experience
-          </Button>
-          {modal&&<DeletePopup 
-            deleteHandler={
-              () => {
-               deleteHandler(loadedExp._id);
+        <div className="buttons">
+          <div className="single-page-btn">
+            <button variant="warning" size="smd">
+              <Link className="btn-link" to="/">Back to experiences</Link>
+            </button>
+          </div>
+
+          <div className="single-page-btn">
+            <button className="delete"
+              variant="warning"
+              size="smd"
+              onClick={modalHandler}
+            >
+              Delete experience
+          </button>
+            {modal && <DeletePopup
+              deleteHandler={
+                () => {
+                  deleteHandler(loadedExp._id);
+                }
               }
-            }
-            modalHandler={modalHandler}
-          />}
-        </div>
-        <div className="single-page-btn">
-          <Button variant="warning" size="smd" onClick={editPostHandler}>
-            Edit experience
-          </Button>
+              modalHandler={modalHandler}
+            />}
+          </div>
+          <div className="single-page-btn">
+            <button className="edit" onClick={editPostHandler}>
+              Edit experience
+          </button>
+          </div>
         </div>
       </Container>
     );

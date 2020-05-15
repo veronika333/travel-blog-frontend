@@ -1,0 +1,33 @@
+.exp-container {
+   width: 80%;
+    box-shadow: 0 0 5px black;
+    margin: 2rem;
+ 
+}
+
+.container {
+    left: 50%;
+    right: 50%;
+    display: grid;
+}
+
+button {
+    border-radius: 3px;
+    border: 1px black solid;
+    background: rgb(226, 228, 142);
+    padding: 8px;
+    box-shadow: 0 0 1px black;
+}
+
+button:hover {
+    background: rgb(88, 175, 37);
+}
+
+.btn-link {
+    color: black;
+}
+
+.btn-link:hover {
+    text-decoration: none;
+    color: white;
+}
