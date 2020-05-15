@@ -37,8 +37,9 @@ const DeletePopup = (props) => {
         //         <button onClick={props.deleteHandler}>Delete</button>
         //     </div>
         // </div>
-<div className="wrapper">
-        <Modal.Dialog className="modal">
+
+<div className="overlay">
+        <Modal.Dialog centered>
             <Modal.Header>
               <Modal.Title>Are you sure?</Modal.Title>
             </Modal.Header>
@@ -50,7 +51,7 @@ const DeletePopup = (props) => {
               <Button variant="warning" size="smd" onClick={props.deleteHandler}>Delete</Button>
             </Modal.Footer>
         </Modal.Dialog>
-</div>
+</div>  
     )
 };
 export default DeletePopup;
