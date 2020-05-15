@@ -233,6 +233,12 @@ const SinglePage = () => {
             </button>
           </div>
 
+
+          <div className="single-page-btn">
+            <button className="edit" onClick={editPostHandler}>
+              Edit experience
+          </button>
+          </div>
           <div className="single-page-btn">
             <button className="delete"
               variant="warning"
@@ -249,11 +255,6 @@ const SinglePage = () => {
               }
               modalHandler={modalHandler}
             />}
-          </div>
-          <div className="single-page-btn">
-            <button className="edit" onClick={editPostHandler}>
-              Edit experience
-          </button>
           </div>
         </div>
       </Container>

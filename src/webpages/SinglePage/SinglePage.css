@@ -16,7 +16,8 @@
 }
 
 .delete {
-    background: rgb(247, 145, 145);
+    background: rgb(255, 43, 43);
+    color: white;
 }
 
 .delete:hover {
@@ -28,5 +29,6 @@
 }
 
 .edit:hover {
-    background: rgb(103, 170, 40);
+    background: rgb(69, 128, 15);
+    color: white;
 }
