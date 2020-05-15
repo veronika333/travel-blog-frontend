@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Component } from "react";
 import "./SinglePage.css";
+import DeletePopup from "../../components/DeletePopup/DeletePopup";
 import axios from "axios";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { useParams, Link } from "react-router-dom";
 import Alert from "react-bootstrap/Alert";
 import Container from "react-bootstrap/Container";
@@ -11,11 +12,15 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 const SinglePage = () => {
+
   const [loadedExp, setLoadedExp] = useState();
 
   //state added to conditional rendering to show failed delete
 
   const [failedDelete, setFailedDelete] = useState();
+
+  const [modal, setModal] = useState(false);
+ 
 
   //state added to conditional rendering to show successful delete
   const [succesfullyDeleted, setSuccesfullyDeleted] = useState();
@@ -89,6 +94,10 @@ const SinglePage = () => {
         });
     }
   });
+
+  const modalHandler = () => {
+    setModal(!modal);
+  }
 
   let exp = undefined;
 
@@ -225,12 +234,18 @@ const SinglePage = () => {
           <Button
             variant="warning"
             size="smd"
-            onClick={() => {
-              deleteHandler(loadedExp._id);
-            }}
+            onClick={modalHandler}
           >
             Delete experience
           </Button>
+          {modal&&<DeletePopup 
+            deleteHandler={
+              () => {
+               deleteHandler(loadedExp._id);
+              }
+            }
+            modalHandler={modalHandler}
+          />}
         </div>
         <div className="single-page-btn">
           <Button variant="warning" size="smd" onClick={editPostHandler}>
