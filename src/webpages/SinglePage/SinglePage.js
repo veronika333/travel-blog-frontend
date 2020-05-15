@@ -2,7 +2,7 @@ import React, { useState, useEffect, Component } from "react";
 import "./SinglePage.css";
 import DeletePopup from "../../components/DeletePopup/DeletePopup";
 import axios from "axios";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { useParams, Link } from "react-router-dom";
 import Alert from "react-bootstrap/Alert";
 import Container from "react-bootstrap/Container";
