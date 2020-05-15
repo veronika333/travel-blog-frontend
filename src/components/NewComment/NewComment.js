@@ -11,7 +11,6 @@ const NewComment = () => {
     const [newComment, setNewComment] = useState({
         author: '',
         content: '',
-        date: '',
         imageUrl: '',
     });
 
@@ -35,7 +34,7 @@ const NewComment = () => {
         c.preventDefault();
 
         // sends new Experience post (NewComment) from browser and database.
-        axios.post("http://localhost:8000/experience/:id/comment", NewComment)
+        axios.post("http://localhost:5000/experience/:id/comment", NewComment)
         .then(response => {
              // Here the code gets the message to make the alert visible.
                 setcommentSent({
