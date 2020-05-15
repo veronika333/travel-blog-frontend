@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./SinglePage.css";
 import axios from "axios";
+import CommentBox from "../../components/CommentBox/CommentBox";
 
 import { useParams, Link } from "react-router-dom";
 import Alert from "react-bootstrap/Alert";
@@ -84,6 +85,11 @@ const SinglePage = () => {
     if (!loadedExp) {
       axios
         .get("http://localhost:5000/experience/" + postId)
+        .then((response) => {
+          setLoadedExp(response.data);
+        });
+      axios
+        .get("http://localhost:5000/experience/" + postId + "/comment")
         .then((response) => {
           setLoadedExp(response.data);
         });
@@ -216,6 +222,9 @@ const SinglePage = () => {
           <img src={loadedExp.imageUrl} alt={loadedExp.title} width="200" />
         </Col>
         <p>{loadedExp.story}</p>
+        <div>
+          <CommentBox />
+        </div>
         <div className="single-page-btn">
           <Button variant="warning" size="smd">
             <Link to="/">Back to experiences.</Link>
