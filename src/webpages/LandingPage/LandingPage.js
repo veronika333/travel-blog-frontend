@@ -10,6 +10,8 @@ import CardDeck from "react-bootstrap/CardDeck";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons";
 
 const LandingPage = () => {
   const [exp, setExp] = useState([]);
@@ -42,14 +44,15 @@ const LandingPage = () => {
                 alt={post.title}
               />
               <Card.Subtitle>{post.author}</Card.Subtitle>
+              <br />
               <Card.Text>
-                {post.location}
+                {post.location} <br />
                 {post.date}
               </Card.Text>
               <Card.Text>{post.shortDesc}</Card.Text>
               <button className="read-more-btn">
                 {/* Links need to be dynamic in order for React rendering to be competent */}
-                <Link to={`/${post._id}`} className="btn-link"> Read experience</Link>
+                <Link to={`/${post._id}`} className="btn-link"> Read experience <FontAwesomeIcon className="arrow-right-icon" icon={faAngleDoubleRight}></FontAwesomeIcon> </Link>
               </button>
             </Card.Body>
           </Card>
@@ -62,7 +65,7 @@ const LandingPage = () => {
     <div >
       <Jumbotron className="bg-transparent jumbotron-fluid p-0 justify-content-center py-5">
         <Container fluid={true} >
-          <h1>Experience Blog</h1>
+          <h1 className="blog-title">Experience Blog</h1>
 
           {expList}
 

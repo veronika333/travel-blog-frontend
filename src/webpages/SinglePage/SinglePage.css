@@ -1,3 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
+
+.full-post {
+    font-family: 'Baloo 2', cursive;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    background: rgba(245, 245, 220, 0.671);
+    padding: 2rem ;
+    box-shadow: 0 0 3px black;
+    display: grid;
+}
+
+.full-post h1 {
+    font-size: xxx-large;
+    font-weight: bolder;
+    margin-bottom: 1rem;
+}
+
 .single-page-btn {
     margin: 2rem auto;
 }
@@ -7,28 +25,56 @@
     width: 80%;
     left: 50%;
     right: 50%;
+    margin-bottom: 2rem;
 }
 
 .buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+  display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+  
+}
+
+.arrow-left-icon {
+    font-size: small;
+    margin-right: 8px;
 }
 
 .delete {
-    background: rgb(255, 43, 43);
+    background: rgb(253, 73, 88);
+ 
     color: white;
 }
 
 .delete:hover {
-    background: rgb(240, 92, 105);
+    background: rgb(255, 43, 43);
 }
 
 .edit {
-    background: rgb(86, 255, 80);
+    background: rgb(181, 253, 179);
+}
+
+.edit-icon {
+    margin-left: 8px; 
 }
 
 .edit:hover {
-    background: rgb(69, 128, 15);
-    color: white;
+    background: rgb(109, 196, 29);
+   
+}
+
+.save-btn {
+    background: rgb(138, 175, 255);
+}
+
+.save-btn:hover {
+    background: rgb(96, 147, 255);
+}
+
+.edit-form {
+    font-family: 'Baloo 2', cursive;
+    margin: 2rem;
+    font-size: large;
+    background:  rgba(245, 245, 220, 0.671);
+    padding: 2rem;
+    box-shadow: 0 0 3px black;
 }

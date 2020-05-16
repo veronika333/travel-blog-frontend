@@ -7,9 +7,11 @@ import { useParams, Link } from "react-router-dom";
 import Alert from "react-bootstrap/Alert";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
+import Jumbotron from "react-bootstrap/Jumbotron";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDoubleLeft, faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 const SinglePage = () => {
 
@@ -110,17 +112,19 @@ const SinglePage = () => {
       <div>
         <Alert variant="warning">
           <Alert.Heading>Experience not Deleted</Alert.Heading>
-          <p>Pleases try again later</p>
+          <p>Please try again later</p>
         </Alert>
       </div>
     );
   } //show loaded exp as form
   else if (loadedExp && editPost) {
     exp = (
-      <Container>
-        <Form style={{ paddingLeft: "2rem", paddingTop: "2rem" }}>
+      <Container >
+        <Form className="edit-form">
+          <h2>Edit experience</h2>
+          <br />
           <Form.Group controlId="formBasicTitle">
-            <Form.Label style={{ fontSize: "1.5rem" }}>Title</Form.Label>
+            <Form.Label>Title</Form.Label>
             <Form.Control
               type="text"
               name="title"
@@ -129,7 +133,7 @@ const SinglePage = () => {
             />
           </Form.Group>
           <Form.Group controlId="formBasicAuthor">
-            <Form.Label style={{ fontSize: "1.5rem" }}>Author</Form.Label>
+            <Form.Label>Author</Form.Label>
             <Form.Control
               type="text"
               name="author"
@@ -139,7 +143,7 @@ const SinglePage = () => {
           </Form.Group>
 
           <Form.Group controlId="formBasicDesc">
-            <Form.Label style={{ fontSize: "1.5rem" }}>
+            <Form.Label >
               Short Description
             </Form.Label>
             <Form.Control
@@ -150,7 +154,7 @@ const SinglePage = () => {
             />
           </Form.Group>
           <Form.Group controlId="formBasicLocation">
-            <Form.Label style={{ fontSize: "1.5rem" }}>Location</Form.Label>
+            <Form.Label >Location</Form.Label>
             <Form.Control
               type="text"
               defaultValue={loadedExp.location}
@@ -159,7 +163,7 @@ const SinglePage = () => {
             />
           </Form.Group>
           <Form.Group controlId="formBasicDate">
-            <Form.Label style={{ fontSize: "1.5rem" }}>Date</Form.Label>
+            <Form.Label >Date</Form.Label>
             <Form.Control
               type="text"
               defaultValue={loadedExp.date}
@@ -169,7 +173,7 @@ const SinglePage = () => {
           </Form.Group>
 
           <Form.Group controlId="formBasicImage">
-            <Form.Label style={{ fontSize: "1.5rem" }}>Image Url</Form.Label>
+            <Form.Label >Image Url</Form.Label>
             <Form.Control
               type="text"
               defaultValue={loadedExp.imageUrl}
@@ -179,7 +183,7 @@ const SinglePage = () => {
           </Form.Group>
 
           <Form.Group controlId="exampleForm.ControlStory">
-            <Form.Label style={{ fontSize: "1.5rem" }}>Story</Form.Label>
+            <Form.Label >Story</Form.Label>
             <Form.Control
               as="textarea"
               rows="3"
@@ -189,9 +193,9 @@ const SinglePage = () => {
             />
           </Form.Group>
 
-          <Button onClick={savePostHandler} variant="primary" type="submit">
+          <button onClick={savePostHandler} className="save-btn" >
             Save
-          </Button>
+          </button>
           {postSaved.disableAlert ? (
             ""
           ) : (
@@ -201,52 +205,45 @@ const SinglePage = () => {
             )}
         </Form>
         <div className="single-page-btn">
-          <Button variant="warning" size="smd">
-            <Link to="/">Back to experiences.</Link>
-          </Button>
+          <button >
+            <Link className="btn-link" to="/"> <FontAwesomeIcon className="arrow-left-icon" icon={faAngleDoubleLeft} />Back to experiences</Link>
+          </button>
         </div>
       </Container>
     );
   } else if (loadedExp) {
     exp = (
-      <Container>
+      <Container className="full-post">
         <Col>
-          <Row>
-            <h1>{loadedExp.title}</h1>
-          </Row>
-          <Row>
-            <h3>{loadedExp.author}</h3>
-          </Row>
+
+          <h1>{loadedExp.title}</h1>
+
+
+          <h3>{loadedExp.author}</h3>
+
           <p>{loadedExp.shortDesc}</p>
           <p>{loadedExp.location}</p>
           <p>{loadedExp.date}</p>
           <img className="image" src={loadedExp.imageUrl} alt={loadedExp.title} width="200" />
-          {/* !it's only possible to upload 1 picture, son we don't need 3 images right now!
-           <img src={loadedExp.imageUrl} alt={loadedExp.title} width="200" />
-          <img src={loadedExp.imageUrl} alt={loadedExp.title} width="200" /> */}
         </Col>
         <p>{loadedExp.story}</p>
         <div className="buttons">
           <div className="single-page-btn">
-            <button variant="warning" size="smd">
-              <Link className="btn-link" to="/">Back to experiences</Link>
+            <button >
+              <Link className="btn-link" to="/"> <FontAwesomeIcon className="arrow-left-icon" icon={faAngleDoubleLeft} />Back to experiences</Link>
             </button>
           </div>
 
 
           <div className="single-page-btn">
             <button className="edit" onClick={editPostHandler}>
-              Edit experience
-          </button>
+              Edit experience <FontAwesomeIcon className="icon" icon={faEdit} />
+            </button>
           </div>
           <div className="single-page-btn">
-            <button className="delete"
-              variant="warning"
-              size="smd"
-              onClick={modalHandler}
-            >
-              Delete experience
-          </button>
+            <button className="delete" onClick={modalHandler}>
+              Delete experience <FontAwesomeIcon className="icon" icon={faTrashAlt} />
+            </button>
             {modal && <DeletePopup
               deleteHandler={
                 () => {
@@ -267,9 +264,9 @@ const SinglePage = () => {
         </Alert>
 
         <div className="single-page-btn">
-          <Button variant="warning" size="smd">
-            <Link to="/">Back to experiences.</Link>
-          </Button>
+          <button >
+            <Link className="btn-link" to="/"> <FontAwesomeIcon className="arrow-left-icon" icon={faAngleDoubleLeft} />Back to experiences</Link>
+          </button>
         </div>
       </div>
     );
