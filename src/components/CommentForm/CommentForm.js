@@ -8,7 +8,12 @@ const CommentForm = (props) => {
       <Form style={{ width: "30%" }}>
         <Form.Group controlId="formBasicName">
           <Form.Label>Name</Form.Label>
-          <Form.Control type="text" name="name" defaultValue={props.author} />
+          <Form.Control
+            type="text"
+            name="name"
+            defaultValue={props.author}
+            onChange={props.changeCommentValue}
+          />
         </Form.Group>
         <Form.Group controlId="formBasicContent">
           <Form.Label>Content</Form.Label>
@@ -17,6 +22,7 @@ const CommentForm = (props) => {
             rows="2"
             name="content"
             defaultValue={props.content}
+            onChange={props.changeCommentValue}
           />
         </Form.Group>
         <Button onClick={props.sendHandler}>Send</Button>
