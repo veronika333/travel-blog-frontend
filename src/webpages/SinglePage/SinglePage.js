@@ -88,11 +88,6 @@ const SinglePage = () => {
         .then((response) => {
           setLoadedExp(response.data);
         });
-      axios
-        .get("http://localhost:5000/experience/" + postId + "/comment")
-        .then((response) => {
-          setLoadedExp(response.data);
-        });
     }
   });
 
