@@ -4,7 +4,8 @@ const Comment = (props) => {
   return (
     <div>
       <h5>{props.author}</h5>
-      {props.children}
+      <p>{props.content}</p>
+      <img src={props.imageUrl} alt={props.imageUrl} />
     </div>
   );
 };
