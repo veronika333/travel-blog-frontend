@@ -5,12 +5,10 @@
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #d6b2b2;
+    background-color: #dfd9d9;
     overflow-x: hidden;
     padding-top: 60px;
     transition: 0.5s;
-    box-shadow: 0 0 8px black;
-    
 }
 
 .nav-bar ul {
@@ -18,18 +16,16 @@
 }
 
 .nav-link {
-    padding: 8px 8px 8px 16px;
+    padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
-    color: #3f3f3f;
+    color: #818181;
     display: block;
     transition: 0.3s;
-    
 }
 
 .nav-link:hover {
-    color: #1d1c1c;
-    text-decoration: underline #1d1c1c;
+    color: #383535;
 }
 
 .open-btn {
@@ -39,7 +35,6 @@
 .open-btn:hover {
     cursor: pointer;
     border-bottom: 2px solid lightcoral;
-    color: lightcoral;
 }
 
 .close-btn:hover {
