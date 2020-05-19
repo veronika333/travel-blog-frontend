@@ -1,9 +1,11 @@
 import React, { useState, useEffect, Component } from "react";
 import "./SinglePage.css";
-import DeletePopup from "../../components/DeletePopup/DeletePopup";
+import NewComment from "../../components/NewComment/NewComment";
 import axios from "axios";
+
+import { Link } from "react-router-dom";
+import DeletePopup from "../../components/DeletePopup/DeletePopup";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useParams, Link } from "react-router-dom";
 import Alert from "react-bootstrap/Alert";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
@@ -253,6 +255,9 @@ const SinglePage = () => {
               modalHandler={modalHandler}
             />}
           </div>
+        </div>
+        <div>
+        <NewComment />
         </div>
       </Container>
     );
