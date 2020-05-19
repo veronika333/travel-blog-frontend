@@ -10,6 +10,7 @@
     position: relative;
     padding: 1.5%;
     border-radius: 5px;
+    
 }
 .overlay {
     position: fixed; /* Sit on top of the page content */
@@ -22,5 +23,6 @@
     bottom: 0;
     background-color: rgba(0,0,0,0.5); /* Black background with opacity */
     justify-items: center;
-    align-items: center;
+    align-items: center;   
+  
 }

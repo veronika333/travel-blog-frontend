@@ -1,3 +1,5 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lalezar&display=swap');
 .main-nav {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -18,8 +20,12 @@
 .logo {
     text-decoration: none;
     color: rgb(59, 59, 59);
+    font-family: 'Lalezar', cursive;
+    font-size: 3rem;
 }
 
 .logo:hover {
     border-bottom: 2px solid lightcoral;
+    color: lightcoral;
+    text-decoration: none;
 }

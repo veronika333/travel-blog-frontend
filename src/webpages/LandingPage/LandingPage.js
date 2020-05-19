@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import SinglePage from "../SinglePage/SinglePage";
 import { useRouteMatch, Route, Switch, Link } from "react-router-dom";
 import axios from "axios";
+import './landingPage.css'
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
@@ -9,6 +10,8 @@ import CardDeck from "react-bootstrap/CardDeck";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons";
 
 const LandingPage = () => {
   const [exp, setExp] = useState([]);
@@ -29,47 +32,45 @@ const LandingPage = () => {
   const expList = exp.map((post) => {
     const link = "/" + post._id;
     return (
-      <div key={post._id}>
-        <Card
-          bg="dark"
-          text="warning"
-          className="mt-3"
-          border="secondary"
-          style={{ width: "20rem" }}
-        >
-          <Card.Body>
-            <Card.Title>{post.title}</Card.Title>
-            <Card.Img
-              variant="top"
-              className="mb-3"
-              src={post.imageUrl}
-              alt={post.title}
-            />
-            <Card.Subtitle>{post.author}</Card.Subtitle>
-            <Card.Text>
-              {post.location}
-              {post.date}
-            </Card.Text>
-            <Card.Text>{post.shortDesc}</Card.Text>
-            <Button variant="warning" size="sm">
-              {/* Links need to be dynamic in order for React rendering to be competent */}
-              <Link to={`/${post._id}`}> Read experience</Link>
-            </Button>
-          </Card.Body>
-        </Card>
+      <div className="container">
+        <div key={post._id} className="exp-container">
+          <Card>
+            <Card.Body>
+              <Card.Title className="card-title">{post.title}</Card.Title>
+              <Card.Img
+                variant="top"
+                className="mb-3"
+                src={post.imageUrl}
+                alt={post.title}
+              />
+              <Card.Subtitle>{post.author}</Card.Subtitle>
+              <br />
+              <Card.Text>
+                {post.location} <br />
+                {post.date}
+              </Card.Text>
+              <Card.Text>{post.shortDesc}</Card.Text>
+              <button className="read-more-btn">
+                {/* Links need to be dynamic in order for React rendering to be competent */}
+                <Link to={`/${post._id}`} className="btn-link"> Read experience <FontAwesomeIcon className="arrow-right-icon" icon={faAngleDoubleRight}></FontAwesomeIcon> </Link>
+              </button>
+            </Card.Body>
+          </Card>
+        </div>
       </div>
     );
   });
 
   return (
-    <div>
-      <Jumbotron className="bg-transparent jumbotron-fluid p-0">
-        <Container fluid={true}>
-          <Row className="justify-content-center py-5">
-            <Col md={2}>
-              <CardDeck>{expList}</CardDeck>
-            </Col>
-          </Row>
+    <div >
+      <Jumbotron className="bg-transparent jumbotron-fluid p-0 justify-content-center py-5">
+        <Container fluid={true} >
+          <h1 className="blog-title">Experience Blog</h1>
+
+          {expList}
+
+
+
         </Container>
       </Jumbotron>
     </div>
