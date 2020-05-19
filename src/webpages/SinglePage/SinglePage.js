@@ -257,7 +257,7 @@ const SinglePage = () => {
           </div>
         </div>
         <div>
-        <NewComment />
+          <NewComment />
         </div>
       </Container>
     );
