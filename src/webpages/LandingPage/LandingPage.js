@@ -15,8 +15,13 @@ const LandingPage = () => {
   let match = useRouteMatch();
 
   useEffect(() => {
+
     axios.get("http://localhost:5000/experience").then((response) => {
-      setExp(response.data);
+      const sorted = response.data.sort((a, b) => {
+        return new Date(b.date) - new Date(a.date)
+      })
+      setExp(sorted);
+
       console.log(response.data);
     });
   }, []);
