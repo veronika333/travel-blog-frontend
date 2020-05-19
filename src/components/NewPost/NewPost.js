@@ -23,6 +23,7 @@ const NewPost = () => {
   const [postSent, setPostSent] = useState({
     disableAlert: true,
     experienceSent: null,
+    toSinglePage: false,
   });
 
   const changeValueHandler = (p) => {
@@ -43,6 +44,7 @@ const NewPost = () => {
         setPostSent({
           disableAlert: false,
           experienceSent: response.data.success ? false : true,
+          toSinglePage: response.data.success ? false : true,
         });
       })
       .catch((err) => {
@@ -51,9 +53,12 @@ const NewPost = () => {
         setPostSent({
           disableAlert: false,
           experienceSent: false,
+          toSinglePage: false,
         });
       });
   };
+
+ 
 
   return (
     <Form className="newPost" onSubmit={addPostHandler}>
