@@ -30,7 +30,7 @@ const LandingPage = () => {
   }, []);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/experience").then((response) => {
+    axios.get("http://localhost:5000/experience/:id/comment").then((response) => {
       setComments(response.data.length)
       console.log(response.data.length)
     })
