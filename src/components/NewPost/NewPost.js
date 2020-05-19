@@ -104,15 +104,6 @@ const NewPost = () => {
         />
       </Form.Group>
       <Form.Group>
-        <Form.Label htmlFor="date">Date</Form.Label>
-        <Form.Control
-          id="date"
-          name="date"
-          type="text"
-          onChange={changeValueHandler}
-        />
-      </Form.Group>
-      <Form.Group>
         <Form.Label htmlFor="story">Story</Form.Label>
         <Form.Control
           id="story"
