@@ -2,6 +2,7 @@ import React, { useState, useEffect, Component } from "react";
 import "./SinglePage.css";
 import NewComment from "../../components/NewComment/NewComment";
 import axios from "axios";
+import CommentBox from "../../components/CommentBox/CommentBox";
 
 import { Link } from "react-router-dom";
 import DeletePopup from "../../components/DeletePopup/DeletePopup";
@@ -227,6 +228,9 @@ const SinglePage = () => {
           <img src={loadedExp.imageUrl} alt={loadedExp.title} width="200" />
         </Col>
         <p>{loadedExp.story}</p>
+        <div>
+          <CommentBox />
+        </div>
         <div className="single-page-btn">
           <Button variant="warning" size="smd">
             <Link to="/">Back to experiences.</Link>
