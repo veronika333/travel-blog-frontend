@@ -230,8 +230,8 @@ const SinglePage = () => {
         </Col>
         <p>{loadedExp.story}</p>
         <div className="buttons">
-          <div className="single-page-btn">
-            <button >
+          <div className="single-page-btn ">
+            <button className="back">
               <Link className="btn-link" to="/"> <FontAwesomeIcon className="arrow-left-icon" icon={faAngleDoubleLeft} />Back to experiences</Link>
             </button>
           </div>
@@ -257,7 +257,7 @@ const SinglePage = () => {
           </div>
         </div>
         <div>
-        <NewComment />
+          <NewComment />
         </div>
       </Container>
     );
