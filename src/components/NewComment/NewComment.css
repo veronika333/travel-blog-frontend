@@ -7,3 +7,12 @@
     color: #EE6352;
     padding: 1rem;
 }
+
+.comment-btn {
+    background: rgb(13, 247, 13);
+}
+
+.comment-btn:hover {
+   background: rgb(0, 219, 0);
+
+}

@@ -14,15 +14,21 @@
     font-size: xxx-large;
     font-weight: bolder;
     margin-bottom: 1rem;
+    text-decoration: underline;
+}
+
+.short-desc {
+    font-style: italic;
 }
 
 .single-page-btn {
-    margin: 2rem auto;
+ width: 15vw;
+ 
 
 }
 
 .image {
-    margin: 1rem;
+    margin: 1rem 1rem 1rem 0;
     width: 80%;
     left: 50%;
     right: 50%;
@@ -30,8 +36,11 @@
 }
 
 .buttons {
+    
+    margin-top: 2rem;
   display: grid;
    grid-template-columns: 1fr 1fr 1fr;
+  
   
 }
 

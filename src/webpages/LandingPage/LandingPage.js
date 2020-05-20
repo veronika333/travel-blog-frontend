@@ -49,7 +49,7 @@ const LandingPage = () => {
                 {post.location} <br />
                 {post.date}
               </Card.Text>
-              <Card.Text>{post.shortDesc}</Card.Text>
+              <Card.Text className="short-desc">{post.shortDesc}</Card.Text>
               <button className="read-more-btn">
                 {/* Links need to be dynamic in order for React rendering to be competent */}
                 <Link to={`/${post._id}`} className="btn-link"> Read experience <FontAwesomeIcon className="arrow-right-icon" icon={faAngleDoubleRight}></FontAwesomeIcon> </Link>
