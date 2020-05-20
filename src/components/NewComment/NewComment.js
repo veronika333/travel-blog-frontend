@@ -3,8 +3,10 @@ import './NewComment.css';
 import axios from 'axios';
 
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+
 import Alert from 'react-bootstrap/Alert';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
 
 const NewComment = () => {
@@ -68,9 +70,9 @@ const NewComment = () => {
                 <Form.Label htmlFor="imageUrl">Include an image</Form.Label>
                 <Form.Control id="imageUrl" name="imageUrl" type="text" onChange={changeCommentValueHandler} />
             </Form.Group>
-            <Button className="d-inline-block" variant="warning" type="submit">
-                Submit
-        </Button>
+            <button className="comment-btn">
+                Submit <FontAwesomeIcon icon={faPaperPlane} className="plane-icon" />
+            </button>
             {
                 commentSent.disableAlert ?
                     '' :

@@ -1,0 +1,16 @@
+.single-comment{
+    border: 4px double black;
+    background: rgba(177, 248, 62, 0.295);
+    margin: 2rem;
+    padding: 1rem;
+    border-radius: 3px;
+}
+
+.comment-author {
+    border-bottom: black 1px dotted;
+    width: 25%;
+}
+
+.comment-content {
+    color: rgb(63, 61, 61);
+}
