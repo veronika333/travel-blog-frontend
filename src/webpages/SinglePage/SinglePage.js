@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component } from "react";
+import React, { useState, useEffect } from "react";
 import "./SinglePage.css";
 import NewComment from "../../components/NewComment/NewComment";
 import axios from "axios";
@@ -10,7 +10,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Alert from "react-bootstrap/Alert";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -206,12 +205,13 @@ const SinglePage = () => {
                 Experience {postSaved.expSaved === true ? "Saved" : "not Saved"}
               </Alert>
             )}
+
+          <div className="single-page-btn">
+            <button >
+              <Link className="btn-link" to="/"> <FontAwesomeIcon className="arrow-left-icon" icon={faAngleDoubleLeft} />Back to experiences.</Link>
+            </button>
+          </div>
         </Form>
-        <div className="single-page-btn">
-          <button >
-            <Link className="btn-link" to="/"> <FontAwesomeIcon className="arrow-left-icon" icon={faAngleDoubleLeft} />Back to experiences.</Link>
-          </button>
-        </div>
       </Container>
     );
   } else if (loadedExp) {
@@ -220,7 +220,7 @@ const SinglePage = () => {
 
       <>
         <Container className="full-post">
-          <Col>
+          <Col >
             <h1>{loadedExp.title}</h1>
             <h3>{loadedExp.author}</h3>
             <p className="short-desc">{loadedExp.shortDesc}</p>
@@ -279,7 +279,7 @@ const SinglePage = () => {
         </Alert>
 
         <div className="single-page-btn">
-          <Button variant="warning" size="smd">
+          <Button >
             <Link to="/">Back to experiences.</Link>
           </Button>
         </div>

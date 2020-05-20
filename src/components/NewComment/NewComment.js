@@ -3,7 +3,7 @@ import './NewComment.css';
 import axios from 'axios';
 
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+
 import Alert from 'react-bootstrap/Alert';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";

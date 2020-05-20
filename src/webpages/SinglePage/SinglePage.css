@@ -24,7 +24,6 @@
 .single-page-btn {
  width: 15vw;
  
-
 }
 
 .image {
@@ -74,6 +73,7 @@
 
 .save-btn {
     background: rgb(138, 175, 255);
+    margin-bottom: 3rem;
 }
 
 .save-btn:hover {
