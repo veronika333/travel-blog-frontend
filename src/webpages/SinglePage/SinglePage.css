@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
 
 .full-post {
@@ -23,6 +24,7 @@
 
 .single-page-btn {
  width: 15vw;
+  margin: 2rem auto;
  
 }
 
@@ -87,4 +89,5 @@
     background:  rgba(245, 245, 220, 0.671);
     padding: 2rem;
     box-shadow: 0 0 3px black;
+
 }

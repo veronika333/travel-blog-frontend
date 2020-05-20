@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import SinglePage from "../SinglePage/SinglePage";
 import { useRouteMatch, Link } from "react-router-dom";
 import axios from "axios";
-import './landingPage.css'
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons";
+
 
 const LandingPage = () => {
   const [exp, setExp] = useState([]);
@@ -28,6 +29,7 @@ const LandingPage = () => {
   const expList = exp.map((post) => {
     const link = "/" + post._id;
     return (
+
       <div className="container">
         <div key={post._id} className="exp-container">
           <Card>
@@ -54,19 +56,20 @@ const LandingPage = () => {
           </Card>
         </div>
       </div >
+
+
     );
   });
 
   return (
-    <div >
-      <Jumbotron className="bg-transparent jumbotron-fluid p-0 justify-content-center py-5">
-        <Container fluid={true} >
-          <h1 className="blog-title">Experience Blog</h1>
-
-          {expList}
-
-
-
+    <div>
+      <Jumbotron className="bg-transparent jumbotron-fluid p-0">
+        <Container fluid={true}>
+          <Row className="justify-content-center py-5">
+            <Col md={2}>
+              <CardDeck>{expList}</CardDeck>
+            </Col>
+          </Row>
         </Container>
       </Jumbotron>
     </div>

@@ -12,8 +12,6 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleDoubleLeft, faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 const SinglePage = () => {
 
@@ -24,7 +22,7 @@ const SinglePage = () => {
   const [failedDelete, setFailedDelete] = useState();
 
   const [modal, setModal] = useState(false);
-
+ 
 
   //state added to conditional rendering to show successful delete
   const [succesfullyDeleted, setSuccesfullyDeleted] = useState();
@@ -156,7 +154,7 @@ const SinglePage = () => {
             />
           </Form.Group>
           <Form.Group controlId="formBasicLocation">
-            <Form.Label >Location</Form.Label>
+            <Form.Label>Location</Form.Label>
             <Form.Control
               type="text"
               defaultValue={loadedExp.location}
@@ -165,7 +163,7 @@ const SinglePage = () => {
             />
           </Form.Group>
           <Form.Group controlId="formBasicDate">
-            <Form.Label >Date</Form.Label>
+            <Form.Label>Date</Form.Label>
             <Form.Control
               type="text"
               defaultValue={loadedExp.date}
@@ -175,7 +173,7 @@ const SinglePage = () => {
           </Form.Group>
 
           <Form.Group controlId="formBasicImage">
-            <Form.Label >Image Url</Form.Label>
+            <Form.Label>Image Url</Form.Label>
             <Form.Control
               type="text"
               defaultValue={loadedExp.imageUrl}
@@ -185,7 +183,7 @@ const SinglePage = () => {
           </Form.Group>
 
           <Form.Group controlId="exampleForm.ControlStory">
-            <Form.Label >Story</Form.Label>
+            <Form.Label>Story</Form.Label>
             <Form.Control
               as="textarea"
               rows="3"
@@ -194,13 +192,14 @@ const SinglePage = () => {
               onChange={(e) => editValueHandler(e)}
             />
           </Form.Group>
-
+  
           <button onClick={savePostHandler} className="save-btn">
             Save
-          </button>
+          </Button>
           {postSaved.disableAlert ? (
             ""
           ) : (
+
               <Alert variant={postSaved.expSaved === true ? "success" : "danger"}>
                 Experience {postSaved.expSaved === true ? "Saved" : "not Saved"}
               </Alert>
@@ -212,12 +211,12 @@ const SinglePage = () => {
             </button>
           </div>
         </Form>
+
       </Container>
     );
   } else if (loadedExp) {
 
     exp = (
-
       <>
         <Container className="full-post">
           <Col >
@@ -270,6 +269,7 @@ const SinglePage = () => {
           </div>
         </Container>
       </>
+
     );
   } else if (succesfullyDeleted) {
     exp = (

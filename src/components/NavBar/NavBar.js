@@ -7,7 +7,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 const NavBar = () => {
   const openNav = () => {
-    document.querySelector(".nav-bar").style.width = "220px";
+    document.querySelector(".nav-bar").style.width = "250px";
   };
   const closeNav = () => {
     document.querySelector(".nav-bar").style.width = "0";
