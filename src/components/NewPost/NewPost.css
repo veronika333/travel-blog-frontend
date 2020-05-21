@@ -18,6 +18,7 @@
     background:  rgba(245, 245, 220, 0.671);
     padding: 2rem;
     box-shadow: 0 0 3px black;
+    width: 100%;
 }
 
 .form-group {
