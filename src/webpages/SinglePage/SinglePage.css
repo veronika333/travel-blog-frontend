@@ -24,13 +24,12 @@
 
 .single-page-btn {
  width: 15vw;
-  margin: 2rem auto;
  
 }
 
 .image {
     margin: 1rem 1rem 1rem 0;
-    width: 80%;
+    width: 100%;
     left: 50%;
     right: 50%;
     margin-bottom: 2rem;
@@ -89,5 +88,4 @@
     background:  rgba(245, 245, 220, 0.671);
     padding: 2rem;
     box-shadow: 0 0 3px black;
-
 }

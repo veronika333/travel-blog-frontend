@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
+
+
 .exp-post-success {
     color: #57A773;
     padding: 1rem;
@@ -6,4 +9,26 @@
 .exp-post-err {
     color: #EE6352;
     padding: 1rem;
+}
+
+.newPost {
+    font-family: 'Baloo 2', cursive;
+    margin: 2rem;
+    font-size: large;
+    background:  rgba(245, 245, 220, 0.671);
+    padding: 2rem;
+    box-shadow: 0 0 3px black;
+}
+
+.form-group {
+    margin-bottom: 2rem;
+ 
+}
+
+.plane-icon {
+    margin-left: 8px;
+  
+}
+.edit-form {
+    width: 100%;
 }
