@@ -18,6 +18,7 @@
 
 .container {
     display: grid;
+    justify-items: center;
 }
 
 .card-body {
