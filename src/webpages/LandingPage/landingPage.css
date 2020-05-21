@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
+
+
+.blog-title {
+    font-family: 'Baloo 2', cursive;
+    font-weight: bolder;
+    font-size: xx-large;
+   text-align: center;
+  
+}
+
+.exp-container {
+   width: 80%;
+    box-shadow: 0 0 5px black;
+    margin: 2rem;
+    font-family: 'Baloo 2', cursive;
+}
+
+.container {
+    display: grid;
+}
+
+.card-body {
+    background: rgba(245, 245, 220, 0.671);
+   
+}
+.card-title {
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.card-subtitle {
+    font-weight: bold;
+}
+
+button {
+    border-radius: 3px;
+    border: 1px black solid;
+    background: rgb(252, 255, 101);
+    padding: 5px 7px;
+   
+}
+
+button:hover {
+    background: rgb(207, 209, 83);
+}
+
+.btn-link {
+    color: black;
+}
+
+.btn-link:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.arrow-right-icon {
+    font-size: small;
+    margin-left: 8px;
+}

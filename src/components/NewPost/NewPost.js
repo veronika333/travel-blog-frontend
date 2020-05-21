@@ -4,6 +4,9 @@ import axios from "axios";
 
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
+import Container from "react-bootstrap/Container";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
 const NewPost = () => {
   const [newPost, setNewPost] = useState({
@@ -55,7 +58,10 @@ const NewPost = () => {
   };
 
   return (
+    <Container>
     <Form className="newPost" onSubmit={addPostHandler}>
+    <h2>Create a new experience</h2>
+        <br />
       <Form.Group>
         <Form.Label htmlFor="title">Title</Form.Label>
         <Form.Control
@@ -100,8 +106,17 @@ const NewPost = () => {
           name="location"
           type="text"
           onChange={changeValueHandler}
-        />
+        /> 
       </Form.Group>
+      <Form.Group>
+          <Form.Label htmlFor="date">Date</Form.Label>
+          <Form.Control
+            id="date"
+            name="date"
+            type="text"
+            onChange={changeValueHandler}
+          />
+        </Form.Group>
       <Form.Group>
         <Form.Label htmlFor="story">Story</Form.Label>
         <Form.Control
@@ -113,9 +128,13 @@ const NewPost = () => {
         />
       </Form.Group>
 
-      <Button className="d-inline-block" variant="warning" type="submit">
+      {/* <Button className="d-inline-block" variant="warning" type="submit">
         Share Experience
-      </Button>
+      </Button> */}
+
+<button className="button">
+          Share Experience   <FontAwesomeIcon icon={faPaperPlane} className="plane-icon" />
+        </button>
 
       {postSent.disableAlert ? (
         ""
@@ -127,6 +146,7 @@ const NewPost = () => {
         </Alert>
       )}
     </Form>
+    </Container>
   );
 };
 
