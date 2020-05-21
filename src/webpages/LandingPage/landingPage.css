@@ -14,16 +14,16 @@
     box-shadow: 0 0 5px black;
     margin: 2rem;
     font-family: 'Baloo 2', cursive;
+ 
 }
 
 .container {
-    display: grid;
+display: grid;
     justify-items: center;
 }
 
 .card-body {
     background: rgba(245, 245, 220, 0.671);
-   
 }
 .card-title {
     font-weight: bold;
