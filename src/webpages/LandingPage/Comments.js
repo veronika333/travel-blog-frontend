@@ -5,7 +5,7 @@ import { faCommentAlt } from '@fortawesome/free-solid-svg-icons'
 const Comments = ({ comments }) => {
     return (
         <div>
-            <p className="comments-lp"><FontAwesomeIcon icon={faCommentAlt} /> {comments} comments </p>
+            <p className="comments-lp"><FontAwesomeIcon className="comment-icon" icon={faCommentAlt} /> {comments} comments </p>
         </div>
     );
 }
