@@ -209,7 +209,7 @@ const SinglePage = () => {
 
           <div className="single-page-btn">
             <button >
-              <Link className="btn-link" to="/"> <FontAwesomeIcon className="arrow-left-icon" icon={faAngleDoubleLeft} />Back to experiences.</Link>
+              <Link className="btn-link" to="/"> <FontAwesomeIcon className="arrow-left-icon" icon={faAngleDoubleLeft} />Back to experiences</Link>
             </button>
           </div>
         </Form>
@@ -282,9 +282,9 @@ const SinglePage = () => {
         </Alert>
 
         <div className="single-page-btn">
-          <Button >
-            <Link to="/">Back to experiences</Link>
-          </Button>
+          <button className="back">
+            <Link className="btn-link" to="/"> <FontAwesomeIcon className="arrow-left-icon" icon={faAngleDoubleLeft} />Back to experiences</Link>
+          </button>
         </div>
       </div>
     );
