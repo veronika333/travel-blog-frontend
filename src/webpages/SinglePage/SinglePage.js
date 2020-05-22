@@ -18,6 +18,7 @@ import { faAngleDoubleLeft, faEdit, faTrashAlt } from "@fortawesome/free-solid-s
 const SinglePage = () => {
 
   const [loadedExp, setLoadedExp] = useState();
+  let dateFormat = undefined;
 
   //state added to conditional rendering to show failed delete
 
@@ -208,13 +209,15 @@ const SinglePage = () => {
 
           <div className="single-page-btn">
             <button >
-              <Link className="btn-link" to="/"> <FontAwesomeIcon className="arrow-left-icon" icon={faAngleDoubleLeft} />Back to experiences.</Link>
+              <Link className="btn-link" to="/"> <FontAwesomeIcon className="arrow-left-icon" icon={faAngleDoubleLeft} />Back to experiences</Link>
             </button>
           </div>
         </Form>
       </Container>
     );
   } else if (loadedExp) {
+    dateFormat = new Date(loadedExp.date).toDateString()
+    console.log(dateFormat)
 
     exp = (
 
@@ -225,7 +228,7 @@ const SinglePage = () => {
             <h3>{loadedExp.author}</h3>
             <p className="short-desc">{loadedExp.shortDesc}</p>
             <p>{loadedExp.location}</p>
-            <p>{loadedExp.date}</p>
+            <p>{dateFormat}</p>
             <img className="image" src={loadedExp.imageUrl} alt={loadedExp.title} width="200" />
 
             <p>{loadedExp.story}</p>
@@ -279,9 +282,9 @@ const SinglePage = () => {
         </Alert>
 
         <div className="single-page-btn">
-          <Button >
-            <Link to="/">Back to experiences</Link>
-          </Button>
+          <button className="back">
+            <Link className="btn-link" to="/"> <FontAwesomeIcon className="arrow-left-icon" icon={faAngleDoubleLeft} />Back to experiences</Link>
+          </button>
         </div>
       </div>
     );
