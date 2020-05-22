@@ -1,15 +1,19 @@
-import React, { useState, useEffect, Component } from "react";
+import React, { useState, useEffect } from "react";
 import "./SinglePage.css";
-import DeletePopup from "../../components/DeletePopup/DeletePopup";
+import NewComment from "../../components/NewComment/NewComment";
 import axios from "axios";
+import CommentBox from "../../components/CommentBox/CommentBox";
+
+import { Link } from "react-router-dom";
+import DeletePopup from "../../components/DeletePopup/DeletePopup";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useParams, Link } from "react-router-dom";
 import Alert from "react-bootstrap/Alert";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDoubleLeft, faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 const SinglePage = () => {
 
@@ -20,7 +24,7 @@ const SinglePage = () => {
   const [failedDelete, setFailedDelete] = useState();
 
   const [modal, setModal] = useState(false);
- 
+
 
   //state added to conditional rendering to show successful delete
   const [succesfullyDeleted, setSuccesfullyDeleted] = useState();
@@ -118,9 +122,11 @@ const SinglePage = () => {
   else if (loadedExp && editPost) {
     exp = (
       <Container>
-        <Form style={{ paddingLeft: "2rem", paddingTop: "2rem" }}>
+        <Form className="edit-form">
+          <h2>Edit experience</h2>
+          <br />
           <Form.Group controlId="formBasicTitle">
-            <Form.Label style={{ fontSize: "1.5rem" }}>Title</Form.Label>
+            <Form.Label>Title</Form.Label>
             <Form.Control
               type="text"
               name="title"
@@ -129,7 +135,7 @@ const SinglePage = () => {
             />
           </Form.Group>
           <Form.Group controlId="formBasicAuthor">
-            <Form.Label style={{ fontSize: "1.5rem" }}>Author</Form.Label>
+            <Form.Label>Author</Form.Label>
             <Form.Control
               type="text"
               name="author"
@@ -139,7 +145,7 @@ const SinglePage = () => {
           </Form.Group>
 
           <Form.Group controlId="formBasicDesc">
-            <Form.Label style={{ fontSize: "1.5rem" }}>
+            <Form.Label>
               Short Description
             </Form.Label>
             <Form.Control
@@ -150,7 +156,7 @@ const SinglePage = () => {
             />
           </Form.Group>
           <Form.Group controlId="formBasicLocation">
-            <Form.Label style={{ fontSize: "1.5rem" }}>Location</Form.Label>
+            <Form.Label >Location</Form.Label>
             <Form.Control
               type="text"
               defaultValue={loadedExp.location}
@@ -159,7 +165,7 @@ const SinglePage = () => {
             />
           </Form.Group>
           <Form.Group controlId="formBasicDate">
-            <Form.Label style={{ fontSize: "1.5rem" }}>Date</Form.Label>
+            <Form.Label >Date</Form.Label>
             <Form.Control
               type="text"
               defaultValue={loadedExp.date}
@@ -169,7 +175,7 @@ const SinglePage = () => {
           </Form.Group>
 
           <Form.Group controlId="formBasicImage">
-            <Form.Label style={{ fontSize: "1.5rem" }}>Image Url</Form.Label>
+            <Form.Label >Image Url</Form.Label>
             <Form.Control
               type="text"
               defaultValue={loadedExp.imageUrl}
@@ -179,7 +185,7 @@ const SinglePage = () => {
           </Form.Group>
 
           <Form.Group controlId="exampleForm.ControlStory">
-            <Form.Label style={{ fontSize: "1.5rem" }}>Story</Form.Label>
+            <Form.Label >Story</Form.Label>
             <Form.Control
               as="textarea"
               rows="3"
@@ -189,70 +195,81 @@ const SinglePage = () => {
             />
           </Form.Group>
 
-          <Button onClick={savePostHandler} variant="primary" type="submit">
+          <button onClick={savePostHandler} className="save-btn">
             Save
-          </Button>
+          </button>
           {postSaved.disableAlert ? (
             ""
           ) : (
-            <Alert variant={postSaved.expSaved === true ? "success" : "danger"}>
-              Experience {postSaved.expSaved === true ? "Saved" : "not Saved"}
-            </Alert>
-          )}
+              <Alert variant={postSaved.expSaved === true ? "success" : "danger"}>
+                Experience {postSaved.expSaved === true ? "Saved" : "not Saved"}
+              </Alert>
+            )}
+
+          <div className="single-page-btn">
+            <button >
+              <Link className="btn-link" to="/"> <FontAwesomeIcon className="arrow-left-icon" icon={faAngleDoubleLeft} />Back to experiences.</Link>
+            </button>
+          </div>
         </Form>
-        <div className="single-page-btn">
-          <Button variant="warning" size="smd">
-            <Link to="/">Back to experiences.</Link>
-          </Button>
-        </div>
       </Container>
     );
   } else if (loadedExp) {
+
     exp = (
-      <Container>
-        <Col>
-          <Row>
+
+      <>
+        <Container className="full-post">
+          <Col >
             <h1>{loadedExp.title}</h1>
-          </Row>
-          <Row>
             <h3>{loadedExp.author}</h3>
-          </Row>
-          <p>{loadedExp.shortDesc}</p>
-          <p>{loadedExp.location}</p>
-          <p>{loadedExp.date}</p>
-          <img src={loadedExp.imageUrl} alt={loadedExp.title} width="200" />
-          <img src={loadedExp.imageUrl} alt={loadedExp.title} width="200" />
-          <img src={loadedExp.imageUrl} alt={loadedExp.title} width="200" />
-        </Col>
-        <p>{loadedExp.story}</p>
-        <div className="single-page-btn">
-          <Button variant="warning" size="smd">
-            <Link to="/">Back to experiences.</Link>
-          </Button>
-        </div>
-        <div className="single-page-btn">
-          <Button
-            variant="warning"
-            size="smd"
-            onClick={modalHandler}
-          >
-            Delete experience
-          </Button>
-          {modal&&<DeletePopup 
-            deleteHandler={
-              () => {
-               deleteHandler(loadedExp._id);
-              }
-            }
-            modalHandler={modalHandler}
-          />}
-        </div>
-        <div className="single-page-btn">
-          <Button variant="warning" size="smd" onClick={editPostHandler}>
-            Edit experience
-          </Button>
-        </div>
-      </Container>
+            <p className="short-desc">{loadedExp.shortDesc}</p>
+            <p>{loadedExp.location}</p>
+            <p>{loadedExp.date}</p>
+            <img className="image" src={loadedExp.imageUrl} alt={loadedExp.title} width="200" />
+
+            <p>{loadedExp.story}</p>
+          </Col>
+          <Container fluid>
+            <div className="buttons">
+              <div className="single-page-btn">
+                <button className="back">
+                  <Link className="btn-link" to="/"> <FontAwesomeIcon className="arrow-left-icon" icon={faAngleDoubleLeft} />Back to experiences.</Link>
+                </button>
+              </div>
+
+              <div className="single-page-btn">
+                <button className="delete"
+                  onClick={modalHandler}
+                >
+                  Delete experience  <FontAwesomeIcon className="icon" icon={faTrashAlt} />
+                </button>
+                {modal && <DeletePopup
+                  deleteHandler={
+                    () => {
+                      deleteHandler(loadedExp._id);
+                    }
+                  }
+                  modalHandler={modalHandler}
+                />}
+              </div>
+              <div className="single-page-btn">
+                <button className="edit" onClick={editPostHandler}>
+                  Edit experience <FontAwesomeIcon className="icon" icon={faEdit} />
+                </button>
+              </div>
+
+            </div>
+          </Container>
+
+        </Container>
+        <Container>
+          <div className="full-post">
+            <CommentBox />
+            <NewComment />
+          </div>
+        </Container>
+      </>
     );
   } else if (succesfullyDeleted) {
     exp = (
@@ -262,7 +279,7 @@ const SinglePage = () => {
         </Alert>
 
         <div className="single-page-btn">
-          <Button variant="warning" size="smd">
+          <Button >
             <Link to="/">Back to experiences.</Link>
           </Button>
         </div>
