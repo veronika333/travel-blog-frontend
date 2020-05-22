@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import SinglePage from "../SinglePage/SinglePage";
 import { useRouteMatch, Link } from "react-router-dom";
-import Comments from './Comments'
+import Comments from "./Comments";
 import axios from "axios";
-import './landingPage.css'
+import "./landingPage.css";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
@@ -12,43 +12,41 @@ import { faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons";
 
 const LandingPage = () => {
   const [exp, setExp] = useState([]);
-  const [comments, setComments] = useState(0)
+  const [comments, setComments] = useState(0);
   let match = useRouteMatch();
   let dateFormat = undefined;
 
-
   useEffect(() => {
+    axios
+      .get("https://travel-experience-blog.herokuapp.com/experience")
+      .then((response) => {
+        const sorted = response.data.sort((a, b) => {
+          return new Date(b.date) - new Date(a.date);
+        });
+        setExp(sorted);
 
-
-    axios.get("http://localhost:5000/experience").then((response) => {
-      const sorted = response.data.sort((a, b) => {
-        return new Date(b.date) - new Date(a.date)
-      })
-      setExp(sorted);
-
-      console.log(response.data);
-
-    });
+        console.log(response.data);
+      });
   }, []);
 
-
   useEffect(() => {
-    axios.get("http://localhost:5000/experience/:id/comment").then((response) => {
-      setComments(response.data.length)
-      console.log(response.data)
-      console.log(response.data.length)
-    })
-  }, [])
-
+    axios
+      .get(
+        "https://travel-experience-blog.herokuapp.com/experience/:id/comment"
+      )
+      .then((response) => {
+        setComments(response.data.length);
+        console.log(response.data);
+        console.log(response.data.length);
+      });
+  }, []);
 
   /* const commentHandler = () => setComments(comments + 1) */
 
-
   const expList = exp.map((post) => {
     const link = "/" + post._id;
-    dateFormat = new Date(post.date).toDateString()
-    console.log(dateFormat)
-
+    dateFormat = new Date(post.date).toDateString();
+    console.log(dateFormat);
 
     return (
       <div className="container">
@@ -71,26 +69,30 @@ const LandingPage = () => {
               <Card.Text className="short-desc"> {post.shortDesc}</Card.Text>
               <button className="read-more-btn">
                 {/* Links need to be dynamic in order for React rendering to be competent */}
-                <Link to={`/${post._id}`} className="btn-link"> Read experience <FontAwesomeIcon className="arrow-right-icon" icon={faAngleDoubleRight}></FontAwesomeIcon> </Link>
+                <Link to={`/${post._id}`} className="btn-link">
+                  {" "}
+                  Read experience{" "}
+                  <FontAwesomeIcon
+                    className="arrow-right-icon"
+                    icon={faAngleDoubleRight}
+                  ></FontAwesomeIcon>{" "}
+                </Link>
               </button>
               <Comments comments={comments}></Comments>
             </Card.Body>
           </Card>
         </div>
-      </div >
+      </div>
     );
   });
 
   return (
-    <div >
+    <div>
       <Jumbotron className="bg-transparent jumbotron-fluid p-0 justify-content-center py-5">
-        <Container fluid={true} >
+        <Container fluid={true}>
           <h1 className="blog-title">Experience Blog</h1>
 
           {expList}
-
-
-
         </Container>
       </Jumbotron>
     </div>

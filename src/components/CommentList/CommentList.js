@@ -6,7 +6,9 @@ const CommentList = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/experience/:id/comment")
+      .get(
+        "https://travel-experience-blog.herokuapp.com/experience/:id/comment"
+      )
       .then((response) => {
         const comments = response.data;
         setGetComment(comments);

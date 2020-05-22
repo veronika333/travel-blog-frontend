@@ -39,7 +39,7 @@ const NewPost = () => {
 
     // sends new Experience post (newPost) from browser and database.
     axios
-      .post("http://localhost:5000/experience", newPost)
+      .post("https://travel-experience-blog.herokuapp.com/experience", newPost)
       .then((response) => {
         // Here the code gets the message to make the alert visible.
         setPostSent({
@@ -129,18 +129,20 @@ const NewPost = () => {
         </Form.Group>
 
         <button className="button">
-          Share Experience   <FontAwesomeIcon icon={faPaperPlane} className="plane-icon" />
+          Share Experience{" "}
+          <FontAwesomeIcon icon={faPaperPlane} className="plane-icon" />
         </button>
 
         {postSent.disableAlert ? (
           ""
         ) : (
-            <Alert
-              variant={postSent.experienceSent === true ? "success" : "danger"}
-            >
-              Experience {postSent.experienceSent === true ? "Posted" : "not Sent"}
-            </Alert>
-          )}
+          <Alert
+            variant={postSent.experienceSent === true ? "success" : "danger"}
+          >
+            Experience{" "}
+            {postSent.experienceSent === true ? "Posted" : "not Sent"}
+          </Alert>
+        )}
       </Form>
     </Container>
   );
