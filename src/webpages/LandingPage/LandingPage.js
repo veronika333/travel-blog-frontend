@@ -14,8 +14,11 @@ const LandingPage = () => {
   const [exp, setExp] = useState([]);
   const [comments, setComments] = useState(0)
   let match = useRouteMatch();
+  let dateFormat = undefined;
+
 
   useEffect(() => {
+
 
     axios.get("http://localhost:5000/experience").then((response) => {
       const sorted = response.data.sort((a, b) => {
@@ -23,9 +26,13 @@ const LandingPage = () => {
       })
       setExp(sorted);
 
+
+
       console.log(response.data);
+
     });
   }, []);
+
 
   useEffect(() => {
     axios.get("http://localhost:5000/experience/:id/comment").then((response) => {
@@ -41,6 +48,9 @@ const LandingPage = () => {
 
   const expList = exp.map((post) => {
     const link = "/" + post._id;
+    dateFormat = new Date(post.date).toDateString()
+    console.log(dateFormat)
+
 
     return (
       <div className="container">
@@ -58,7 +68,7 @@ const LandingPage = () => {
               <br />
               <Card.Text>
                 {post.location} <br />
-                {post.date}
+                {dateFormat}
               </Card.Text>
               <Card.Text className="short-desc"> {post.shortDesc}</Card.Text>
               <button className="read-more-btn">
