@@ -18,6 +18,7 @@ import { faAngleDoubleLeft, faEdit, faTrashAlt } from "@fortawesome/free-solid-s
 const SinglePage = () => {
 
   const [loadedExp, setLoadedExp] = useState();
+  let dateFormat = undefined;
 
   //state added to conditional rendering to show failed delete
 
@@ -215,6 +216,8 @@ const SinglePage = () => {
       </Container>
     );
   } else if (loadedExp) {
+    dateFormat = new Date(loadedExp.date).toDateString()
+    console.log(dateFormat)
 
     exp = (
 
@@ -225,7 +228,7 @@ const SinglePage = () => {
             <h3>{loadedExp.author}</h3>
             <p className="short-desc">{loadedExp.shortDesc}</p>
             <p>{loadedExp.location}</p>
-            <p>{loadedExp.date}</p>
+            <p>{dateFormat}</p>
             <img className="image" src={loadedExp.imageUrl} alt={loadedExp.title} width="200" />
 
             <p>{loadedExp.story}</p>

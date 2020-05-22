@@ -26,8 +26,6 @@ const LandingPage = () => {
       })
       setExp(sorted);
 
-
-
       console.log(response.data);
 
     });
