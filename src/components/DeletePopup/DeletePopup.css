@@ -1,0 +1,26 @@
+.modal-header {
+    background-color: rgb(247, 228, 199);
+    text-align: center;
+}
+.modal-dialog {
+    width: 35%;
+    height: 40%;
+    color: black;
+    text-align: center;
+    position: relative;
+    padding: 1.5%;
+    border-radius: 5px;
+}
+.overlay {
+    position: fixed; /* Sit on top of the page content */
+    /*display: none; *//* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    justify-items: center;
+    align-items: center;
+}
