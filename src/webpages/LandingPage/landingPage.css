@@ -59,3 +59,13 @@ button:hover {
     font-size: small;
     margin-left: 8px;
 }
+
+.comments-lp {
+    color: rgb(75, 74, 74);
+    margin-top: 1rem;
+}
+
+.comment-icon {
+    margin-right: 5px;
+
+}

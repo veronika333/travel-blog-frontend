@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SinglePage from "../SinglePage/SinglePage";
 import { useRouteMatch, Link } from "react-router-dom";
+import Comments from './Comments'
 import axios from "axios";
 import './landingPage.css'
 import Jumbotron from "react-bootstrap/Jumbotron";
@@ -11,6 +12,7 @@ import { faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons";
 
 const LandingPage = () => {
   const [exp, setExp] = useState([]);
+  const [comments, setComments] = useState(0)
   let match = useRouteMatch();
 
   useEffect(() => {
@@ -25,8 +27,21 @@ const LandingPage = () => {
     });
   }, []);
 
+  useEffect(() => {
+    axios.get("http://localhost:5000/experience/:id/comment").then((response) => {
+      setComments(response.data.length)
+      console.log(response.data)
+      console.log(response.data.length)
+    })
+  }, [])
+
+
+  /* const commentHandler = () => setComments(comments + 1) */
+
+
   const expList = exp.map((post) => {
     const link = "/" + post._id;
+
     return (
       <div className="container">
         <div key={post._id} className="exp-container">
@@ -50,6 +65,7 @@ const LandingPage = () => {
                 {/* Links need to be dynamic in order for React rendering to be competent */}
                 <Link to={`/${post._id}`} className="btn-link"> Read experience <FontAwesomeIcon className="arrow-right-icon" icon={faAngleDoubleRight}></FontAwesomeIcon> </Link>
               </button>
+              <Comments comments={comments}></Comments>
             </Card.Body>
           </Card>
         </div>
